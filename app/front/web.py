@@ -1,10 +1,8 @@
-import sys
 from flask import Flask, render_template, request, redirect, flash
 
-sys.path.append('app')
 
-from back.marketplaces import create_marketplace
-from back.products import create_product
+from app.back.marketplaces import create_marketplace
+from app.back.products import create_product
 
 
 app = Flask(__name__)
@@ -15,9 +13,11 @@ app.secret_key = 'IOAHGFYAOGFEYHAGO'
 def index():
     return render_template('index.html')
 
+
 @app.route('/marketplace')
 def marketplace_form():
     return render_template('new_marketplace.html')
+
 
 @app.route('/marketplace/create')
 def marketplace_create():
@@ -27,9 +27,11 @@ def marketplace_create():
     flash(f'Marketplace Created! - {name}')
     return redirect('/')
 
+
 @app.route('/product')
 def product_form():
     return render_template('new_product.html')
+
 
 @app.route('/product/create')
 def product_create():
@@ -39,5 +41,3 @@ def product_create():
     create_product(name, description, price)
     flash(f'Product Created! - {name}')
     return redirect('/')
-
-app.run(debug=True)
