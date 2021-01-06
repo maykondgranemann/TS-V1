@@ -27,7 +27,7 @@ def marketplace_create():
     flash(f'Marketplace Created! - {name}')
     return redirect('/')
 
-@app.route('/marketplace/read')
+@app.route('/marketplace/list')
 def marketplace_read():
     list_marketplaces = read_marketplaces()
     return render_template('read_marketplaces.html', list = list_marketplaces)
