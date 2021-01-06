@@ -7,16 +7,14 @@ def create_product(name: str, description: str, price: float):
 
 def read_products()-> list:
     list_products = read_txt('products')
-    print(list_products)
+    
     for i, line in enumerate(list_products):
         str_ = re.search("Name: (.+?) - Desc: (.+?) - Price: (.+?)", line)
-        print(line)
         result = {
             "name":str_.group(1),
             "description":str_.group(2),
             "price":float(str_.group(3))
         }
-        print(result)
         list_products[i] = result
     return list_products
         
