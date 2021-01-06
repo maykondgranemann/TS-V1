@@ -14,4 +14,13 @@ def write_to_logs(operation_name: str) -> None:
 
 def write_to_txt_store(data: str, file_name: str) -> None:
     with open(f'{file_name}.txt', 'a') as file:
-        file.write(f'\n{data}')
+        file.write(f'{data}\n')
+
+def read_txt(file_name: str) -> list:
+    list_file_lines = []
+    file = open(f'{file_name}.txt', 'r')
+    for line in file:
+        list_file_lines.append(line)
+    file.close()
+    return list_file_lines
+
