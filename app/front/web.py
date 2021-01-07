@@ -60,7 +60,13 @@ def list_products():
 @app.route("/log/list")
 def list_log():
     log_list = read_txt("logs")
-    
+    for i, e in enumerate(log_list):
+        color = "default"
+        if "list" in e.casefold():
+            color = "#0277bd"
+        elif "created" in e.casefold():
+            color = "#388e3c"
+        log_list[i] = {"text":e, "color":color}
     return render_template("list_log.html", log_list=log_list)
 
 @app.route('/seller/create')

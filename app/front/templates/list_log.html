@@ -8,7 +8,7 @@
     </tr>
     {% for log in log_list%}
     <tr>
-      <td>{{log}}</td>
+      <td style="background:{{log.color}}">{{log.text}}</td>
     </tr>
     {% endfor %}
   </table>
