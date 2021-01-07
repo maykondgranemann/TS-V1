@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {% block content %}
+
+<h3>Categories</h3>
+<table style="width:100%">
+  <tr>
+    <th>Nome</th>
+    <th>Descrição</th>
+  </tr>
+  {% for i in list%}
+  <tr>
+        <td>{{i[0]}}</td>
+        <td>{{i[1]}}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}
