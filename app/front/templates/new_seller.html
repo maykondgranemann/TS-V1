@@ -1,0 +1,11 @@
+{% extends "base.html" %} {% block content %}
+<h1>New Seller</h1>
+<form action="/seller/create" method="get">
+    <div class="row">
+        <input type="text" placeholder="Name" class="form-control" name="name" id="name" />    
+        <input type="text" placeholder="Phone" class="form-control" name="phone" id="phone" />    
+        <input type="text" placeholder="e-mail" class="form-control" name="email" id="email" />    
+    <input id="submit" type="submit" class="btn btn-primary" value="Submit" />
+    </div>
+  </form>
+  {% endblock %}
