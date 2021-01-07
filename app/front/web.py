@@ -4,7 +4,7 @@ from flask import Flask, render_template, request, redirect, flash
 
 from app.back.marketplaces import create_marketplace, read_marketplaces
 from app.back.products import create_product, read_products
-
+from app.back.seller import create_seller, read_seller
 
 app = Flask(__name__)
 app.secret_key = 'IOAHGFYAOGFEYHAGO'
@@ -53,3 +53,21 @@ def list_products():
     product_list = read_products()
     
     return render_template("list_products.html", product_list=product_list)
+
+@app.route('/seller/create')
+def seller_create():
+    if request.args:
+        name =  request.args["name"],
+        phone =  request.args.get('phone'),
+        email = request.args.get('email')
+        
+        create_seller(name, phone, email)
+        flash(f'Seller Created! - {name}')
+        return redirect('/')
+    
+    return render_template("new_seller.html")
+@app.route("/seller/list")
+def list_sellers():
+    seller_list = read_seller()
+    
+    return render_template("list_sellers.html", seller_list=seller_list)
