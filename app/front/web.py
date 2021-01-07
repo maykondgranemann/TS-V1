@@ -1,8 +1,9 @@
 from flask import Flask, render_template, request, redirect, flash
 
 
+
 from app.back.marketplaces import create_marketplace, read_marketplaces
-from app.back.products import create_product
+from app.back.products import create_product, read_products
 
 
 app = Flask(__name__)
@@ -46,3 +47,9 @@ def product_create():
     create_product(name, description, price)
     flash(f'Product Created! - {name}')
     return redirect('/')
+
+@app.route("/product/list")
+def list_products():
+    product_list = read_products()
+    
+    return render_template("list_products.html", product_list=product_list)

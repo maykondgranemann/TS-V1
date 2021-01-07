@@ -1,5 +1,6 @@
 import pytz
 from datetime import datetime
+import re
 
 
 def get_datetime_str_sao_paulo() -> str:
@@ -22,5 +23,5 @@ def read_txt(file_name: str) -> list:
     for line in file:
         list_file_lines.append(line)
     file.close()
-    return list_file_lines
 
+    return list_file_lines
