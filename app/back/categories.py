@@ -5,6 +5,7 @@ def create_category(name: str, description: str):
     write_to_txt_store(f'Name: {name} - Desc: {description}', 'categories')
     write_to_logs(f'Created Category - {name}')
 
+
 def read_categories() -> list:
     list_categories = read_txt('categories')
     list_formatted = []

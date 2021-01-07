@@ -51,7 +51,6 @@ def product_create():
 @app.route("/product/list")
 def list_products():
     product_list = read_products()
-
     return render_template("list_products.html", product_list=product_list)
 
 
