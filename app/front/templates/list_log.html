@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Log's List</h1>
+<table style="width:100%">
+    <tr>
+        <th>Log</th>
+    </tr>
+    {% for log in log_list%}
+    <tr>
+      <td style="background:{{log.color}}">{{log.text}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}

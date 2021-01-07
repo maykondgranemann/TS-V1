@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Product's List</h1>
+<table style="width:100%">
+    <tr>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>e-mail</th>
+    </tr>
+    {% for seller in seller_list %}
+    <tr>
+      <td>{{seller.name}}</td>
+      <td>{{seller.phone}}</td>
+      <td>{{ seller.email }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endblock %}
