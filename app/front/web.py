@@ -3,10 +3,10 @@ from datetime import datetime
 from flask import Flask, render_template, request, redirect, flash
 
 from app.back.controllers.category_controller import create_category, read_categories
-#from app.back.marketplaces import create_marketplace, read_marketplaces
+from app.back.controllers.marketplace_controller import create_marketplace, read_marketplace
 from app.back.controllers.product_controller import create_product, read_products
 from app.back.controllers.log_controller import create_log, read_logs
-#from app.back.seller import create_seller, read_seller
+from app.back.controlles.seller_controller import create_seller, read_seller
 
 
 app = Flask(__name__)
@@ -34,7 +34,7 @@ def marketplace_create():
 
 @app.route('/marketplace/list')
 def marketplace_read():
-    list_marketplaces = read_marketplaces()
+    list_marketplaces = read_marketplace()
     return render_template('list_marketplaces.html', list=list_marketplaces)
 
 
