@@ -2,13 +2,11 @@ from datetime import datetime
 
 from flask import Flask, render_template, request, redirect, flash
 
-from app.back.categories import create_category, read_categories
-from app.back.marketplaces import create_marketplace, read_marketplaces
-from app.back.products import create_product, read_products
-from app.back.utils import read_txt
-from app.back.marketplaces import create_marketplace, read_marketplaces
-from app.back.products import create_product, read_products
-from app.back.seller import create_seller, read_seller
+from app.back.controllers.category_controller import create_category, read_categories
+from app.back.controllers.marketplace_controller import create_marketplace, read_marketplaces
+from app.back.controllers.product_controller import create_product, read_products
+from app.back.controllers.log_controller import create_log, read_logs
+from app.back.controlles.seller_controller import create_seller, read_seller
 
 
 app = Flask(__name__)
@@ -29,14 +27,14 @@ def marketplace_form():
 def marketplace_create():
     name = request.args.get('name')
     description = request.args.get('description')
-    create_marketplace(name, description)
+    save_marketplace(name, description)
     flash(f'Marketplace Created! - {name}')
     return redirect('/')
 
 
 @app.route('/marketplace/list')
 def marketplace_read():
-    list_marketplaces = read_marketplaces()
+    list_marketplaces = read_marketplace()
     return render_template('list_marketplaces.html', list=list_marketplaces)
 
 
@@ -99,7 +97,7 @@ def seller_create():
         phone =  request.args.get('phone'),
         email = request.args.get('email')
         
-        create_seller(name, phone, email)
+        save_seller(name, phone, email)
         flash(f'Seller Created! - {name}')
         return redirect('/')
     
