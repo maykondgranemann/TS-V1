@@ -3,7 +3,7 @@ from datetime import datetime
 from flask import Flask, render_template, request, redirect, flash
 
 from app.back.controllers.category_controller import create_category, read_categories
-from app.back.controllers.marketplace_controller import create_marketplace, read_marketplaces
+from app.back.controllers.marketplace_controller import create_marketplace, read_marketplace
 from app.back.controllers.product_controller import create_product, read_products
 from app.back.controllers.log_controller import create_log, read_logs
 from app.back.controlles.seller_controller import create_seller, read_seller
@@ -27,7 +27,7 @@ def marketplace_form():
 def marketplace_create():
     name = request.args.get('name')
     description = request.args.get('description')
-    save_marketplace(name, description)
+    create_marketplace(name, description)
     flash(f'Marketplace Created! - {name}')
     return redirect('/')
 
@@ -80,15 +80,8 @@ def category_read():
   
 @app.route("/log/list")
 def list_log():
-    log_list = read_txt("logs")
-    for i, e in enumerate(log_list):
-        color = "default"
-        if "list" in e.casefold():
-            color = "#0277bd"
-        elif "creat" in e.casefold():
-            color = "#388e3c"
-        log_list[i] = {"text":e, "color":color}
-    return render_template("list_log.html", log_list=log_list)
+    log_list = read_logs()
+    return render_template("list_log.html", log_list=log_list, color= "")
 
 @app.route('/seller/create')
 def seller_create():
@@ -97,7 +90,7 @@ def seller_create():
         phone =  request.args.get('phone'),
         email = request.args.get('email')
         
-        save_seller(name, phone, email)
+        create_seller(name, phone, email)
         flash(f'Seller Created! - {name}')
         return redirect('/')
     
