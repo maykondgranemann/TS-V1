@@ -4,11 +4,18 @@
 <h1>Log's List</h1>
 <table style="width:100%">
     <tr>
-        <th>Log</th>
+        <th>Datetime</th>
+        <th>Description</th>
     </tr>
     {% for log in log_list%}
     <tr>
-      <td style="background:{{log.color}}">{{log.text}}</td>
+      {% if "Created" in log[1] %}
+        <td style="background:#388e3c" >{{log[0]}}</td>
+        <td style="background:#388e3c" >{{log[1]}}</td>
+      {% else %}
+        <td style="background:#0277bd" >{{log[0]}}</td>
+        <td style="background:#0277bd" >{{log[1]}}</td>
+      {% endif %}
     </tr>
     {% endfor %}
   </table>
