@@ -1,4 +1,4 @@
-from app.back.dao_txt.product_dao_txt import set_product, get_products # pega do txt
+from app.back.dao.product_dao import set_product, get_products # pega do txt
 from app.back.controllers.log_controller import create_log
 
 
