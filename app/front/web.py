@@ -6,7 +6,7 @@ from app.back.controllers.category_controller import create_category, read_categ
 from app.back.controllers.marketplace_controller import create_marketplace, read_marketplace
 from app.back.controllers.product_controller import create_product, read_products
 from app.back.controllers.log_controller import create_log, read_logs
-from app.back.controlles.seller_controller import create_seller, read_seller
+from app.back.controllers.seller_controller import create_seller, read_seller
 
 
 app = Flask(__name__)
@@ -77,24 +77,28 @@ def category_create():
 def category_read():
     list_categories = read_categories()
     return render_template('list_categories.html', list=list_categories)
-  
+
+
 @app.route("/log/list")
 def list_log():
     log_list = read_logs()
     return render_template("list_log.html", log_list=log_list, color= "")
 
+
+@app.route('/seller')
+def seller_form():
+    return render_template("new_seller.html")
+
+
 @app.route('/seller/create')
 def seller_create():
-    if request.args:
-        name =  request.args["name"],
-        phone =  request.args.get('phone'),
-        email = request.args.get('email')
-        
-        create_seller(name, phone, email)
-        flash(f'Seller Created! - {name}')
-        return redirect('/')
-    
-    return render_template("new_seller.html")
+    name =  request.args.get('name')
+    phone =  request.args.get('phone')
+    email = request.args.get('email')
+    create_seller(name, phone, email)
+    flash(f'Seller Created! - {name}')
+    return redirect('/')
+
 
 @app.route("/seller/list")
 def list_sellers():
