@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>Product's List</h1>
+<h1>Seller's List</h1>
 <table style="width:100%">
     <tr>
         <th>Name</th>
@@ -10,9 +10,9 @@
     </tr>
     {% for seller in seller_list %}
     <tr>
-      <td>{{seller.name}}</td>
-      <td>{{seller.phone}}</td>
-      <td>{{ seller.email }}</td>
+      <td>{{ seller[0] }}</td>
+      <td>{{ seller[1] }}</td>
+      <td>{{ seller[2] }}</td>
     </tr>
     {% endfor %}
   </table>

@@ -1,12 +1,11 @@
 from pathlib import Path
-import pytz
 from datetime import datetime
 
 
 _file = 'app/back/dao_txt/data/logs.txt'
 
 def set_log(message: str) -> None:
-    date = datetime.now(pytz.timezone("America/Sao_Paulo"))
+    date = datetime.now()
     date = date.strftime('%d/%m/%Y - %H:%M:%S')
     file_path = Path(_file)
     if file_path.is_file():
