@@ -8,6 +8,9 @@ from app.back.controllers.product_controller import create_product, read_product
 from app.back.controllers.log_controller import create_log, read_logs
 from app.back.controllers.seller_controller import create_seller, read_seller
 from app.back.models.product import Product
+from app.back.models.category import Category
+from app.back.models.seller import Seller
+from app.back.models.marketplace import Marketplace
 
 app = Flask(__name__)
 app.secret_key = 'IOAHGFYAOGFEYHAGO'
@@ -27,7 +30,8 @@ def marketplace_form():
 def marketplace_create():
     name = request.args.get('name')
     description = request.args.get('description')
-    create_marketplace(name, description)
+    marketplace = Marketplace(name, description)
+    create_marketplace(marketplace)
     flash(f'Marketplace Created! - {name}')
     return redirect('/')
 
@@ -69,8 +73,9 @@ def category_form():
 def category_create():
     name = request.args.get('name')
     description = request.args.get('description')
-    create_category(name, description)
-    flash(f'Category Created! - {name}')
+    category= Category(name, description)
+    create_category(category)
+    flash(f'Category Created! - {category.name}')
     return redirect('/')
 
 
@@ -96,7 +101,8 @@ def seller_create():
     name =  request.args.get('name')
     phone =  request.args.get('phone')
     email = request.args.get('email')
-    create_seller(name, phone, email)
+    seller = Seller(name, phone, email)
+    create_seller(seller)
     flash(f'Seller Created! - {name}')
     return redirect('/')
 

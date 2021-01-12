@@ -4,15 +4,17 @@
 <h1>Seller's List</h1>
 <table style="width:100%">
     <tr>
+        <th>Id</th>
         <th>Name</th>
         <th>Phone</th>
         <th>e-mail</th>
     </tr>
     {% for seller in seller_list %}
     <tr>
-      <td>{{ seller[0] }}</td>
-      <td>{{ seller[1] }}</td>
-      <td>{{ seller[2] }}</td>
+      <td>{{ seller.id }}</td>
+      <td>{{ seller.name }}</td>
+      <td>{{ seller.phone }}</td>
+      <td>{{ seller.mail }}</td>
     </tr>
     {% endfor %}
   </table>
