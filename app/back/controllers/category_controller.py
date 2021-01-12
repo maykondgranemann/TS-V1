@@ -1,4 +1,3 @@
-from app.back.models.category import Category
 from app.back.dao.category_dao import set_category, get_categories
 from app.back.controllers.log_controller import create_log
 from app.back.models.category import Category
