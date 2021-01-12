@@ -1,9 +1,8 @@
-from app.back.dao_txt.log_dao_txt import set_log, get_logs
+from app.back.dao.log_dao import set_log, get_log
 
 
 def create_log(message: str) -> None:
     set_log(message)
     
-
 def read_logs() -> list:
-    return get_logs()
+    return get_log()
