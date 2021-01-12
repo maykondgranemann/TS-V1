@@ -4,9 +4,9 @@ from app.back.controllers.log_controller import create_log
 
 def create_seller(name: str, phone: str, mail: str) -> None:
     set_seller(name, phone, mail)
-    create_log(f"Created marketplace {name}")
+    create_log(f"Created seller {name}")
 
 def read_seller() -> list:
     sellers = get_seller()
-    create_log(f"Listing marketplaces")
+    create_log(f"Listing sellers")
     return sellers
