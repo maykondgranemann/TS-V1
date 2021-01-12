@@ -1,6 +1,6 @@
-from app.back.models.marketplace import Marketplace
 from app.back.controllers.log_controller import create_log
 from app.back.dao.connection import get_connection
+from app.back.models.marketplace import Marketplace
 
 
 def set_marketplace(marketplace: Marketplace) -> None:

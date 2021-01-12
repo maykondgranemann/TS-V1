@@ -1,4 +1,3 @@
-from app.back.models.marketplace import Marketplace
 from datetime import datetime
 
 from flask import Flask, render_template, request, redirect, flash
@@ -10,6 +9,7 @@ from app.back.controllers.log_controller import create_log, read_logs
 from app.back.controllers.seller_controller import create_seller, read_seller
 from app.back.models.category import Category
 from app.back.models.seller import Seller
+from app.back.models.marketplace import Marketplace
 
 app = Flask(__name__)
 app.secret_key = 'IOAHGFYAOGFEYHAGO'
