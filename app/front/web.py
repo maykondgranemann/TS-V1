@@ -7,6 +7,7 @@ from app.back.controllers.marketplace_controller import create_marketplace, read
 from app.back.controllers.product_controller import create_product, read_products
 from app.back.controllers.log_controller import create_log, read_logs
 from app.back.controllers.seller_controller import create_seller, read_seller
+from app.back.models.product import Product
 from app.back.models.category import Category
 from app.back.models.seller import Seller
 from app.back.models.marketplace import Marketplace
@@ -51,8 +52,9 @@ def product_create():
     name = request.args.get('name')
     description = request.args.get('description')
     price = float(request.args.get('price'))
-    create_product(name, description, price)
-    flash(f'Product Created! - {name}')
+    product = Product(name, description, price)
+    create_product(product)
+    flash(f'Product Created! - {product.name}')
     return redirect('/')
 
 

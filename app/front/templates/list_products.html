@@ -2,15 +2,17 @@
 <h1>Product's List</h1>
 <table style="width:100%">
     <tr>
+        <th>Id</th>
         <th>Name</th>
         <th>Description</th>
         <th>Price</th>
     </tr>
     {% for product in product_list%}
     <tr>
-      <td>{{product[0]}}</td>
-      <td>{{product[1]}}</td>
-      <td>{{ "R$ %.2f"|format(product[2]|float) }}</td>
+      <td>{{product.id}}</td>
+      <td>{{product.name}}</td>
+      <td>{{product.description}}</td>
+      <td>{{ "R$ %.2f"|format(product.price|float) }}</td>
     </tr>
     {% endfor %}
   </table>
