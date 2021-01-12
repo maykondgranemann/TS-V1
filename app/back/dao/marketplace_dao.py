@@ -5,7 +5,7 @@ from app.back.dao.connection import get_connection
 def set_marketplace(name: str, description: str) -> None:
     conn = get_connection()
     cursor = conn.cursor()
-    cursor.execute(f"INSERT INTO marketplace (name, description) VALUES ('{name}', '{description})';")
+    cursor.execute(f"INSERT INTO marketplace (name, description) VALUES ('{name}', '{description}');")
     conn.commit()
     cursor.close()
     conn.close()

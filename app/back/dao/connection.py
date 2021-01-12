@@ -20,17 +20,15 @@ def _connection_credentials() -> str:
     password = credentials[3]
     return f'host={host} user={user} dbname={database} password={password}'
 
-_connection_string = _connection_credentials()
-
 def _set_database():
-    conn = psycopg2.connect(_connection_string)
+    conn = psycopg2.connect(_connection_credentials())
     cur = conn.cursor()
 
-    cur.execute("CREATE TABLE IF NOT EXISTS product (id serial not null, name varchar(200) not null, phone varchar(20) not null, mail varchar(50) not null, constraint product_pk primary key (id)) ;")
-    cur.execute("CREATE TABLE IF NOT EXISTS category (id serial not null, name varchar(200) not null, description varchar(20) not null, constraint category_pk primary key (id)) ;")
+    cur.execute("CREATE TABLE IF NOT EXISTS product (id serial not null, name varchar(200) not null, description varchar(200) not null, price numeric(20) not null, constraint product_pk primary key (id)) ;")
+    cur.execute("CREATE TABLE IF NOT EXISTS category (id serial not null, name varchar(200) not null, description varchar(200) not null, constraint category_pk primary key (id)) ;")
     cur.execute("CREATE TABLE IF NOT EXISTS marketplace (id serial not null, name varchar(50) not null, description varchar(200) null, constraint marketplace_pk primary key (id));")
     cur.execute("CREATE TABLE IF NOT EXISTS seller (id serial not null, name varchar(100) not null, telephone varchar(20) not null, email varchar(50) not null, constraint seller_pk primary key (id));")
-    cur.execute("CREATE TABLE IF NOT EXISTS log (id serial not null, message varchar(50) not null, constraint log_pk primary key (id));")
+    cur.execute("CREATE TABLE IF NOT EXISTS log (id serial not null, message varchar(500) not null, constraint log_pk primary key (id));")
     conn.commit()
 
     cur.close()
@@ -38,4 +36,4 @@ def _set_database():
 
 def get_connection():
     _set_database()
-    return psycopg2.connect(_connection_string)
+    return psycopg2.connect(_connection_credentials())
