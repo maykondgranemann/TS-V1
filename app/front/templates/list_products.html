@@ -10,7 +10,7 @@
     <tr>
       <td>{{product[0]}}</td>
       <td>{{product[1]}}</td>
-      <td>{{ "R$ %.2f"|format(product[2]) }}</td>
+      <td>{{ "R$ %.2f"|format(product[2]|int) }}</td>
     </tr>
     {% endfor %}
   </table>

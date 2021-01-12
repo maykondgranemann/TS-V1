@@ -1,4 +1,4 @@
-from app.back.dao_txt.category_dao_txt import set_category, get_categories
+from app.back.dao.category_dao import set_category, get_categories
 from app.back.controllers.log_controller import create_log
 
 
