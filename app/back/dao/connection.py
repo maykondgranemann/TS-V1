@@ -1,11 +1,26 @@
 import psycopg2
 
-_host = 'pgsql08-farm15.uni5.net'
-_user = 'topskills12'
-_password = 'olist21'
-_database = 'topskills12'
 
-_connection_string = f'host={_host} user={_user} dbname = {_database} password={_password}'
+_file_name = 'app/back/dao/credentials.txt'
+
+def get_credential() -> list:
+    credentials = []
+    file = open(_file_name, 'r')
+    for line in file:
+        treated_line = line.strip()
+        credentials.append(treated_line)
+    file.close()
+    return credentials
+
+def _connection_credentials() -> str:
+    credentials = get_credential()
+    host = credentials[0]
+    user = credentials[1]
+    database = credentials[2]
+    password = credentials[3]
+    return f'host={host} user={user} dbname={database} password={password}'
+
+_connection_string = _connection_credentials()
 
 def _set_database():
     conn = psycopg2.connect(_connection_string)
