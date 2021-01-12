@@ -5,7 +5,7 @@ def set_product(name: str, description: str, price: float) -> None:
     conn = get_connection()
     cur = conn.cursor()
 
-    cur.execute(f"INSERT INTO product (name, description, price) VALUES ({name}, {description}, {price});")
+    cur.execute(f"INSERT INTO product (name, description, price) VALUES ('{name}', '{description}', '{price}');")
     conn.commit()
 
     cur.close()

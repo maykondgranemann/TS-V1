@@ -5,7 +5,7 @@ def set_category(name: str, description: str) -> None:
     conn = get_connection()
     cur = conn.cursor()
 
-    cur.execute(f"INSERT INTO category (name, description) VALUES ({name}, {description});")
+    cur.execute(f"INSERT INTO category (name, description) VALUES ('{name}', '{description}');")
     conn.commit()
 
     cur.close()
