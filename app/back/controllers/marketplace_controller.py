@@ -1,4 +1,4 @@
-from app.back.dao_txt.marketplace_dao_txt import set_marketplace, get_marketplace
+from app.back.dao.marketplace_dao import set_marketplace, get_marketplace
 from app.back.controllers.log_controller import create_log
 
 

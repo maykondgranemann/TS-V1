@@ -1,4 +1,4 @@
-from app.back.dao_txt.seller_dao_txt import set_seller, get_seller
+from app.back.dao.seller_dao import set_seller, get_seller
 from app.back.controllers.log_controller import create_log
 
 
