@@ -7,7 +7,7 @@ from app.back.controllers.marketplace_controller import create_marketplace, read
 from app.back.controllers.product_controller import create_product, read_products
 from app.back.controllers.log_controller import create_log, read_logs
 from app.back.controllers.seller_controller import create_seller, read_seller
-
+from app.back.models.category import Category
 
 app = Flask(__name__)
 app.secret_key = 'IOAHGFYAOGFEYHAGO'
@@ -68,8 +68,9 @@ def category_form():
 def category_create():
     name = request.args.get('name')
     description = request.args.get('description')
-    create_category(name, description)
-    flash(f'Category Created! - {name}')
+    category= Category(name, description)
+    create_category(category)
+    flash(f'Category Created! - {category.name}')
     return redirect('/')
 
 
