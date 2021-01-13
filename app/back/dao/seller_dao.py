@@ -29,3 +29,19 @@ def get_seller() -> list:
         print('An unexpected error has occurred')
 
     return sellers
+
+def del_seller(id: str):
+    try:
+        with psycopg2.connect(connection_credentials()) as conn:
+            cursor = conn.cursor()
+            cursor.execute(f"DELETE FROM seller WHERE id='{id}'")
+    except:
+        print('An unexpected error has occurred')
+
+def upd_seller(seller: Seller):
+    try:
+        with psycopg2.connect(connection_credentials()) as conn:
+            cursor = conn.cursor()
+            cursor.execute(f"UPDATE seller SET name='{seller.name}', telephone='{seller.phone}', email='{seller.mail}' WHERE id={seller.id}")
+    except:
+        print('An unexpected error has occurred')

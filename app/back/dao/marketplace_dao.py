@@ -31,9 +31,6 @@ def get_marketplace() -> list:
              
     return marketplaces
 
-def get_by_id():
-    pass
-
 def del_marketplace(id: str):
     try:
         set_database()
