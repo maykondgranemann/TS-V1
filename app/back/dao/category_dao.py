@@ -3,21 +3,29 @@ from app.back.dao.connection import get_connection
 from app.back.models.category import Category
 
 def set_category(category: Category) -> None:
-    with get_connection() as conn:        
-        cur = conn.cursor()
-        cur.execute(f"INSERT INTO category (name, description) VALUES ('{category.name}', '{category.description}');")
-        conn.commit()
+    try:
+        with get_connection() as conn:        
+            cur = conn.cursor()
+            cur.execute(f"INSERT INTO category (name, description) VALUES ('{category.name}', '{category.description}');")
+            conn.commit()
+    except:
+        print('An unexpected error has occurred')
+
 
 def get_categories() -> list:
-    with get_connection() as conn:
-        cur = conn.cursor()
+    categories = []
+    try:
+        with get_connection() as conn:
+            cur = conn.cursor()
 
-        cur.execute(f"SELECT NAME, DESCRIPTION, ID FROM category;")
-        result = cur.fetchall()
-        categories = []
+            cur.execute(f"SELECT NAME, DESCRIPTION, ID FROM category;")
+            result = cur.fetchall()
+            
 
-        for item in result:
-            category= Category(item[0], item[1], item[2])
-            categories.append(category)
+            for item in result:
+                category= Category(item[0], item[1], item[2])
+                categories.append(category)
+    except:
+        print('An unexpected error has occurred')
 
-        return categories
+    return categories
