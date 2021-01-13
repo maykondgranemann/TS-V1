@@ -4,7 +4,7 @@ from flask import Flask, render_template, request, redirect, flash
 
 from app.back.controllers.category_controller import create_category, read_categories, update_category, delete_category
 from app.back.controllers.marketplace_controller import create_marketplace, read_marketplace
-from app.back.controllers.product_controller import create_product, read_products
+from app.back.controllers.product_controller import create_product, read_products, update_product, delete_product
 from app.back.controllers.log_controller import create_log, read_logs
 from app.back.controllers.seller_controller import create_seller, read_seller
 from app.back.models.product import Product
@@ -46,7 +46,6 @@ def marketplace_read():
 def product_form():
     return render_template('new_product.html')
 
-
 @app.route('/product/create')
 def product_create():
     name = request.args.get('name')
@@ -56,6 +55,38 @@ def product_create():
     create_product(product)
     flash(f'Product Created! - {product.name}')
     return redirect('/')
+
+
+@app.route('/product/update')
+def product_update():
+    id = request.args.get('id')
+    name = request.args.get('name')
+    description = request.args.get('description')
+    price = float(request.args.get('price'))
+    product = Product(name, description, price, id)
+    return render_template('update_product.html', product=product)
+
+
+@app.route('/product/updated')
+def product_updated():
+    id = request.args.get('id')
+    name = request.args.get('name')
+    description = request.args.get('description')
+    price = float(request.args.get('price'))
+    
+    product= Product(name, description, price, id)
+    update_product(product)
+    flash(f'Product Updated! - {product.name}')
+    return redirect('/product/list')
+
+
+@app.route('/product/delete')
+def product_delete():
+    id = request.args.get('id')
+
+    delete_product(id)
+    flash(f'Product Deleted!')
+    return redirect('/category/list')
 
 
 @app.route("/product/list")
