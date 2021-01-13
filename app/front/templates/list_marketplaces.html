@@ -7,6 +7,7 @@
     <th>Nome</th>
     <th>Descrição</th>
     <th></th>
+    <th></th>
   </tr>
   {% for marktplaces in list%}
   <tr>
@@ -14,6 +15,7 @@
         <td>{{marktplaces.name}}</td>
         <td>{{marktplaces.description}}</td>
         <td> <a href="/marketplace/update/form?id={{marktplaces.id}}&name={{marktplaces.name}}&description={{marktplaces.description}}"><i class="fas fa-pen" ></i></a> </td>
+        <td> <a href="/marketplace/delete?id={{marktplaces.id}}"><i class="fa fa-trash" ></i></a> </td>
   </tr>
   {% endfor %}
 </table>

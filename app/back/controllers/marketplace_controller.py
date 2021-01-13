@@ -1,4 +1,4 @@
-from app.back.dao.marketplace_dao import set_marketplace, get_marketplace, upd_marketplace
+from app.back.dao.marketplace_dao import del_marketplace, set_marketplace, get_marketplace, upd_marketplace
 from app.back.controllers.log_controller import create_log
 from app.back.models.marketplace import Marketplace
 
@@ -11,8 +11,8 @@ def read_marketplace() -> list:
     create_log(f"Listing marketplaces")
     return marketplaces
 
-def delete_marketplace():
-    pass
+def delete_marketplace(id: str):
+    del_marketplace(id)
 
 def update_marketplace(marketplace: Marketplace):
     upd_marketplace(marketplace)

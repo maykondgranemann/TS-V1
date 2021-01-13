@@ -1,4 +1,4 @@
-from app.back.controllers.marketplace_controller import change_marketplace
+from app.back.controllers.marketplace_controller import delete_marketplace, update_marketplace
 from flask import Flask, render_template, request, redirect, flash
 
 from app.back.controllers.category_controller import create_category, read_categories
@@ -48,7 +48,13 @@ def marketplace_update():
     name = request.args.get('name')
     description = request.args.get('description')
     marketplace = Marketplace(name, description, id)
-    change_marketplace(marketplace)
+    update_marketplace(marketplace)
+    return redirect("/marketplace/list")
+
+@app.route('/marketplace/delete')
+def marketplace_delete():
+    id = request.args.get('id')
+    delete_marketplace(id)
     return redirect("/marketplace/list")
 
 @app.route('/marketplace/list')

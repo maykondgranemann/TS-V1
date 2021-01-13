@@ -10,6 +10,7 @@
         name="name"
         id="name"
         aria-label="Name"
+        value={{marketplace.name}}
       />
       <label for="name" class="form-label">Description</label>
       <textarea
@@ -17,9 +18,10 @@
         rows="4"
         name="description"
         id="description"
-      ></textarea>
+        
+      >{{marketplace.description}}</textarea>
     </div>
-    <input type="text" name="id" id="id" value={{marketplace.id}} readonly>
+    <input type="hidden" name="id" id="id" value={{marketplace.id}} readonly>
   </div>
   <div class="row">
     <input id="submit" type="submit" class="btn btn-primary" value="Submit" />

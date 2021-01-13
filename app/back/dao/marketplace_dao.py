@@ -1,6 +1,4 @@
 import psycopg2
-import sys
-sys.path.append('.')
 from app.back.controllers.log_controller import create_log
 from app.back.dao.connection import set_database, connection_credentials
 from app.back.models.marketplace import Marketplace
@@ -36,8 +34,14 @@ def get_marketplace() -> list:
 def get_by_id():
     pass
 
-def del_marketplace():
-    pass
+def del_marketplace(id: str):
+    try:
+        set_database()
+        with psycopg2.connect(connection_credentials()) as conn:
+            cursor = conn.cursor()
+            cursor.execute(f"DELETE FROM marketplace WHERE id='{id}'")
+    except:
+        print('An unexpected error has occurred')
 
 def upd_marketplace(marketplace: Marketplace):
     try:
