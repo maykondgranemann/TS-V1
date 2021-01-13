@@ -2,7 +2,7 @@ from datetime import datetime
 
 from flask import Flask, render_template, request, redirect, flash
 
-from app.back.controllers.category_controller import create_category, read_categories
+from app.back.controllers.category_controller import create_category, read_categories, update_category, delete_category
 from app.back.controllers.marketplace_controller import create_marketplace, read_marketplace
 from app.back.controllers.product_controller import create_product, read_products
 from app.back.controllers.log_controller import create_log, read_logs
@@ -77,6 +77,36 @@ def category_create():
     create_category(category)
     flash(f'Category Created! - {category.name}')
     return redirect('/')
+
+
+@app.route('/category/update')
+def category_update():
+    id = request.args.get('id')
+    name = request.args.get('name')
+    description = request.args.get('description')
+    category= Category(name, description, id)
+    return render_template('update_category.html', category=category)
+
+
+@app.route('/category/updated')
+def category_updated():
+    id = request.args.get('id')
+    name = request.args.get('name')
+    description = request.args.get('description')
+    
+    category= Category(name, description, id)
+    update_category(category)
+    flash(f'Category Updated! - {category.name}')
+    return redirect('/category/list')
+
+
+@app.route('/category/delete')
+def category_delete():
+    id = request.args.get('id')
+
+    delete_category(id)
+    flash(f'Category Deleted!')
+    return redirect('/category/list')
 
 
 @app.route('/category/list')
