@@ -141,3 +141,6 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+# Not wanted files
+app/back/dao/credentials.txt
