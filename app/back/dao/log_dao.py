@@ -1,4 +1,5 @@
-from app.back.dao.connection import get_connection
+import psycopg2
+from app.back.dao.connection import _set_database, _connection_credentials
 from app.back.models.log import Log
 
 
@@ -6,7 +7,8 @@ def set_log(log: Log) -> None:
     date_message = f'{log.date};{log.message}'
     
     try:
-        with get_connection() as conn:
+        _set_database()
+        with psycopg2.connect(_connection_credentials()) as conn:
             cursor = conn.cursor()
             cursor.execute(f"INSERT INTO log (message) VALUES ('{date_message}');")
             conn.commit()
@@ -18,7 +20,8 @@ def get_log() -> list:
     log_list = []
 
     try:
-        with get_connection() as conn:
+        _set_database()
+        with psycopg2.connect(_connection_credentials()) as conn:
             cursor = conn.cursor()
             cursor.execute(f'SELECT message, id FROM log;')
             logs = cursor.fetchall()

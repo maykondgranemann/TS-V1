@@ -33,7 +33,3 @@ def _set_database():
             conn.commit()
     except:
         print('An unexpected error has occurred')
-
-def get_connection():
-    _set_database()
-    return psycopg2.connect(_connection_credentials())
