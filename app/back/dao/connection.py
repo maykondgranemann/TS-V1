@@ -12,7 +12,7 @@ def get_credential() -> list:
             
     return credentials
 
-def _connection_credentials() -> str:
+def connection_credentials() -> str:
     credentials = get_credential()
     host = credentials[0]
     user = credentials[1]
@@ -20,9 +20,9 @@ def _connection_credentials() -> str:
     password = credentials[3]
     return f'host={host} user={user} dbname={database} password={password}'
 
-def _set_database():
+def set_database():
     try:
-        with psycopg2.connect(_connection_credentials()) as conn:
+        with psycopg2.connect(connection_credentials()) as conn:
             cur = conn.cursor()
 
             cur.execute("CREATE TABLE IF NOT EXISTS product (id serial not null, name varchar(200) not null, description varchar(200) not null, price numeric(20) not null, constraint product_pk primary key (id)) ;")
