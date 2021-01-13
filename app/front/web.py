@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from flask import Flask, render_template, request, redirect, flash
 
 from app.back.controllers.category_controller import create_category, read_categories
@@ -34,7 +32,22 @@ def marketplace_create():
     create_marketplace(marketplace)
     flash(f'Marketplace Created! - {name}')
     return redirect('/')
+    
+@app.route('/marketplace/update/form')
+def marketplace_update_form():
+    id = request.args.get('id')
+    name = request.args.get('name')
+    description = request.args.get('description')
+    marketplace = Marketplace(name, description, id)
+    return render_template("update_marketplace.html", marketplace=marketplace)
 
+@app.route('/marketplace/update')
+def marketplace_update():
+    id = request.args.get('id')
+    name = request.args.get('name')
+    description = request.args.get('description')
+    print(id, name, description)
+    return redirect("/marketplace/list")
 
 @app.route('/marketplace/list')
 def marketplace_read():
