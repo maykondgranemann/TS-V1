@@ -1,4 +1,6 @@
 import psycopg2
+import sys
+sys.path.append('.')
 from app.back.controllers.log_controller import create_log
 from app.back.dao.connection import set_database, connection_credentials
 from app.back.models.marketplace import Marketplace
@@ -30,3 +32,18 @@ def get_marketplace() -> list:
         print('An unexpected error has occurred')   
              
     return marketplaces
+
+def get_by_id():
+    pass
+
+def del_marketplace():
+    pass
+
+def upd_marketplace(marketplace: Marketplace):
+    try:
+        set_database()
+        with psycopg2.connect(connection_credentials()) as conn:
+            cursor = conn.cursor()
+            cursor.execute(f"UPDATE marketplace SET name='{marketplace.name}',description='{marketplace.description}'WHERE id='{marketplace.id}'")
+    except:
+        print('An unexpected error has occurred')
