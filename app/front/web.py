@@ -1,12 +1,10 @@
 from flask import Flask, render_template, request, redirect, flash
 
 from app.back.controllers.category_controller import create_category, read_categories
-from app.back.controllers.marketplace_controller import create_marketplace, read_marketplace
+from app.back.controllers.marketplace_controller import create_marketplace, read_marketplace, delete_marketplace, update_marketplace
 from app.back.controllers.product_controller import create_product, read_products
-from app.back.controllers.log_controller import create_log, read_logs
-from app.back.controllers.seller_controller import create_seller, read_seller
-from app.back.controllers.marketplace_controller import delete_marketplace, update_marketplace
-from app.back.controllers.seller_controller import delete_seller, update_seller
+from app.back.controllers.log_controller import read_logs
+from app.back.controllers.seller_controller import create_seller, read_seller, delete_seller, update_seller
 from app.back.models.product import Product
 from app.back.models.category import Category
 from app.back.models.seller import Seller
