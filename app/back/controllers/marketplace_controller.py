@@ -13,6 +13,8 @@ def read_marketplace() -> list:
 
 def delete_marketplace(id: str):
     del_marketplace(id)
+    create_log(f"Deleting marketplace")
 
 def update_marketplace(marketplace: Marketplace):
     upd_marketplace(marketplace)
+    create_log(f"Deleting marketplaces")

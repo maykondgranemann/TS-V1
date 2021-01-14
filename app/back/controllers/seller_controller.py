@@ -13,6 +13,8 @@ def read_seller() -> list:
 
 def delete_seller(id: str):
     del_seller(id)
+    create_log(f"Listing sellers")
 
 def update_seller(seller: Seller):
     upd_seller(seller)
+    create_log(f"Deleting sellers")
