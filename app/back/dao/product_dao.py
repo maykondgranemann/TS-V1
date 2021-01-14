@@ -33,3 +33,21 @@ def get_products() -> list:
         print('An unexpected error has occurred')
     
     return products
+
+
+def upd_product(product: Product) -> None:
+    try:
+        with psycopg2.connect(connection_credentials()) as conn:
+            cur = conn.cursor()
+            cur.execute(f"UPDATE product SET name='{product.name}', description='{product.description}', price='{product.price}' WHERE id={product.id}")
+    except:
+        print('An unexpected error has occurred')
+
+
+def del_product(id: str) -> None:
+    try:
+        with psycopg2.connect(connection_credentials()) as conn:
+            cur = conn.cursor()
+            cur.execute(f"DELETE FROM product WHERE id={id}")
+    except:
+        print('An unexpected error has occurred')
