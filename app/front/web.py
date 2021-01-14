@@ -1,12 +1,10 @@
-from datetime import datetime
-
 from flask import Flask, render_template, request, redirect, flash
 
+from app.back.controllers.marketplace_controller import create_marketplace, read_marketplace, delete_marketplace, update_marketplace
+from app.back.controllers.log_controller import read_logs
+from app.back.controllers.seller_controller import create_seller, read_seller, delete_seller, update_seller
 from app.back.controllers.category_controller import create_category, read_categories, update_category, delete_category
-from app.back.controllers.marketplace_controller import create_marketplace, read_marketplace
 from app.back.controllers.product_controller import create_product, read_products, update_product, delete_product
-from app.back.controllers.log_controller import create_log, read_logs
-from app.back.controllers.seller_controller import create_seller, read_seller
 from app.back.models.product import Product
 from app.back.models.category import Category
 from app.back.models.seller import Seller
@@ -34,7 +32,29 @@ def marketplace_create():
     create_marketplace(marketplace)
     flash(f'Marketplace Created! - {name}')
     return redirect('/')
+    
+@app.route('/marketplace/update/form')
+def marketplace_update_form():
+    id = request.args.get('id')
+    name = request.args.get('name')
+    description = request.args.get('description')
+    marketplace = Marketplace(name, description, id)
+    return render_template("update_marketplace.html", marketplace=marketplace)
 
+@app.route('/marketplace/update')
+def marketplace_update():
+    id = request.args.get('id')
+    name = request.args.get('name')
+    description = request.args.get('description')
+    marketplace = Marketplace(name, description, id)
+    update_marketplace(marketplace)
+    return redirect("/marketplace/list")
+
+@app.route('/marketplace/delete')
+def marketplace_delete():
+    id = request.args.get('id')
+    delete_marketplace(id)
+    return redirect("/marketplace/list")
 
 @app.route('/marketplace/list')
 def marketplace_read():
@@ -172,3 +192,28 @@ def seller_create():
 def list_sellers():
     seller_list = read_seller()
     return render_template("list_sellers.html", seller_list=seller_list)
+
+@app.route('/seller/update/form')
+def seller_update_form():
+    id = request.args.get('id')
+    name = request.args.get('name')
+    phone = request.args.get('phone')
+    email = request.args.get('mail')
+    seller = Seller(name, phone, email, id)
+    return render_template("update_seller.html", seller=seller)
+
+@app.route('/seller/update')
+def seller_update():
+    id = request.args.get('id')
+    name = request.args.get('name')
+    phone = request.args.get('phone')
+    email = request.args.get('email')
+    seller = Seller(name, phone, email, id)
+    update_seller(seller)
+    return redirect('/seller/list')
+
+@app.route('/seller/delete')
+def seller_delete():
+    id = request.args.get('id')
+    delete_seller(id)
+    return redirect("/seller/list")

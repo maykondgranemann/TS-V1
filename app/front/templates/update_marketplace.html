@@ -1,0 +1,31 @@
+{% extends "base.html" %} {% block content %}
+<h1>Update Marketplace</h1>
+<form action="/marketplace/update" method="get">
+  <div class="row">
+    <div class="col-sm mb-4">
+      <label for="name" class="form-label">Name</label>
+      <input
+        type="text"
+        class="form-control mb-2"
+        name="name"
+        id="name"
+        aria-label="Name"
+        value={{marketplace.name}}
+      />
+      <label for="name" class="form-label">Description</label>
+      <textarea
+        class="form-control"
+        rows="4"
+        name="description"
+        id="description"
+        
+      >{{marketplace.description}}</textarea>
+    </div>
+    <input type="hidden" name="id" id="id" value={{marketplace.id}} readonly>
+  </div>
+  <div class="row">
+    <input id="submit" type="submit" class="btn btn-primary" value="Submit" />
+    <a class="btn btn-primary" href="/">Back</a>
+  </div>
+</form>
+{% endblock %}

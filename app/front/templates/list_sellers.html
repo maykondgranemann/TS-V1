@@ -8,6 +8,8 @@
         <th>Name</th>
         <th>Phone</th>
         <th>e-mail</th>
+        <th></th>
+        <th></th>
     </tr>
     {% for seller in seller_list %}
     <tr>
@@ -15,6 +17,8 @@
       <td>{{ seller.name }}</td>
       <td>{{ seller.phone }}</td>
       <td>{{ seller.mail }}</td>
+      <td> <a href="/seller/update/form?id={{seller.id}}&name={{seller.name}}&phone={{seller.phone}}&mail={{seller.mail}}"><i class="fas fa-pen" ></i></a> </td>
+      <td> <a href="/seller/delete?id={{seller.id}}"><i class="fa fa-trash" ></i></a> </td>
     </tr>
     {% endfor %}
   </table>

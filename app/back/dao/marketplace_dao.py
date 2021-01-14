@@ -11,8 +11,8 @@ def set_marketplace(marketplace: Marketplace) -> None:
             cursor = conn.cursor()
             cursor.execute(f"INSERT INTO marketplace (name, description) VALUES ('{marketplace.name}', '{marketplace.description}');")
             conn.commit()
-    except:
-        print('An unexpected error has occurred')
+    except Exception as error:
+        print(error)
 
 def get_marketplace() -> list:
     marketplaces = []
@@ -26,7 +26,25 @@ def get_marketplace() -> list:
             for item in result:
                 marketplace = Marketplace(item[0], item[1], item[2])
                 marketplaces.append(marketplace)
-    except:
-        print('An unexpected error has occurred')   
+    except Exception as error:
+        print(error)   
              
     return marketplaces
+
+def del_marketplace(id: str):
+    try:
+        set_database()
+        with psycopg2.connect(connection_credentials()) as conn:
+            cursor = conn.cursor()
+            cursor.execute(f"DELETE FROM marketplace WHERE id='{id}'")
+    except Exception as error:
+        print(error)
+
+def upd_marketplace(marketplace: Marketplace):
+    try:
+        set_database()
+        with psycopg2.connect(connection_credentials()) as conn:
+            cursor = conn.cursor()
+            cursor.execute(f"UPDATE marketplace SET name='{marketplace.name}',description='{marketplace.description}'WHERE id='{marketplace.id}'")
+    except Exception as error:
+        print(error)
