@@ -1,0 +1,39 @@
+{% extends "base.html" %} {% block content %}
+<h1>Update Category</h1>
+<form action="/category/updated" method="get">
+  <div class="row">
+    <div class="col-sm mb-4">
+        <label for="id" class="form-label">Id</label>
+        <input
+          type="text"
+          class="form-control mb-2"
+          name="id"
+          id="id"
+          aria-label="Id"
+          value="{{category.id}}"
+          readonly
+        />
+      <label for="name" class="form-label">Name</label>
+      <input
+        type="text"
+        class="form-control mb-2"
+        name="name"
+        id="name"
+        aria-label="Name"
+        value="{{ category.name }}"
+      />
+      <label for="name" class="form-label">Description</label>
+      <textarea
+        class="form-control"
+        rows="4"
+        name="description"
+        id="description"
+      >{{ category.description }}</textarea>
+    </div>
+  </div>
+  <div class="row">
+    <input id="submit" type="submit" class="btn btn-primary" value="Submit" />
+    <a class="btn btn-primary" href="/category/list">Back</a>
+  </div>
+</form>
+{% endblock %}

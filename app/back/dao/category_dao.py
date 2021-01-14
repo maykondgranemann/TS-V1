@@ -32,3 +32,21 @@ def get_categories() -> list:
         print('An unexpected error has occurred')
 
     return categories
+
+
+def upd_category(category: Category) -> None:
+    try:
+        with psycopg2.connect(connection_credentials()) as conn:
+            cur = conn.cursor()
+            cur.execute(f"UPDATE category SET name='{category.name}', description='{category.description}' WHERE id={category.id}")
+    except:
+        print('An unexpected error has occurred')
+
+
+def del_category(id: str) -> None:
+    try:
+        with psycopg2.connect(connection_credentials()) as conn:
+            cur = conn.cursor()
+            cur.execute(f"DELETE FROM category WHERE id={id}")
+    except:
+        print('An unexpected error has occurred')

@@ -12,6 +12,17 @@
       <td>{{category.id}}</td>
       <td>{{category.name}}</td>
       <td>{{category.description}}</td>
+      <td>
+        <a href="/category/update?id={{ category.id }}&name={{ category.name }}&description={{ category.description }}">
+          <i class="fas fa-pen"></i>
+        </a>
+        
+      </td>
+      <td>
+        <a href="/category/delete?id={{ category.id }}">
+          <i class="fa fa-trash"></i>
+        </a>
+      </td>
   </tr>
   {% endfor %}
 </table>

@@ -1,0 +1,25 @@
+{% extends "base.html" %} {% block content %}
+<h1>New Product</h1>
+<form action="/product/updated" method="get">
+  <div class="row">
+    <div class="col-sm mb-4">
+      <input type="text" placeholder="Id" class="form-control" name="id" id="id" aria-label="Id"
+        value="{{ product.id }}" readonly />
+    </div>
+
+    <div class="input-group mb-3">
+      <input type="text" placeholder="Name" class="form-control" name="name" id="name" aria-label="Name" value="{{ product.name }}"/>
+      <span class="input-group-text">R$</span>
+      <input type="number" placeholder="0.00" class="form-control" name="price" id="price" aria-label="Price" value="{{ product.price }}"/>
+    </div>
+    <div class="col-sm mb-4">
+      <label for="name" class="form-label">Description</label>
+      <textarea class="form-control" rows="4" name="description" id="description">{{ product.description }}</textarea>
+    </div>
+  </div>
+  <div class="row">
+    <input id="submit" type="submit" class="btn btn-primary" value="Submit" />
+    <a class="btn btn-primary" href="/product/list">Back</a>
+  </div>
+</form>
+{% endblock %}
