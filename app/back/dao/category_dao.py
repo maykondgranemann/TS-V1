@@ -2,7 +2,6 @@ from app.back.models.category import Category
 from .base_dao import BaseDao
 
 class CategoryDao(BaseDao):
-
     def create(self, model: Category) -> None:
         query = f"INSERT INTO category (name, description) VALUES ('{model.name}', '{model.description}');"
         super().execute(query)
@@ -21,7 +20,6 @@ class CategoryDao(BaseDao):
         for result in result_list:
             category = Category(result[0], result[1], result[2])
             categories.append(category)
-
         return categories
 
     def update(self, model: Category) -> None:
