@@ -9,7 +9,6 @@ class BaseDao:
                 connection.commit()
         except Exception as error:
             print(error)
-
     
     def read(self, query: str) -> list:
         try:
