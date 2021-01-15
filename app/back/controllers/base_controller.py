@@ -1,7 +1,8 @@
 from app.back.controllers.log_controller import LogController
-log = LogController()
-class BaseController:
 
+log = LogController()
+
+class BaseController:
     def __init__(self, dao, name_entity):
         self.name_entity = name_entity
         self.__dao = dao
