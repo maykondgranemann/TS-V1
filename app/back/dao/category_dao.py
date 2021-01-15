@@ -1,52 +1,33 @@
-import psycopg2
-from app.back.controllers.log_controller import create_log
-from app.back.dao.connection import set_database, connection_credentials
 from app.back.models.category import Category
+from .base_dao import BaseDao
 
-def set_category(category: Category) -> None:
-    try:
-        set_database()
-        with psycopg2.connect(connection_credentials()) as conn:       
-            cur = conn.cursor()
-            cur.execute(f"INSERT INTO category (name, description) VALUES ('{category.name}', '{category.description}');")
-            conn.commit()
-    except:
-        print('An unexpected error has occurred')
+class CategoryDao(BaseDao):
 
+    def create(self, model: Category) -> None:
+        query = f"INSERT INTO category (name, description) VALUES ('{model.name}', '{model.description}');"
+        super().execute(query)
 
-def get_categories() -> list:
-    categories = []
-    try:
-        set_database()
-        with psycopg2.connect(connection_credentials()) as conn:
-            cur = conn.cursor()
+    def read_by_id(self, id: int) -> Category:
+        query = f"SELECT name, description, id FROM category WHERE id = {id};"
+        result = super().read(query)[0]
+        category = Category(result[0], result[1], result[2])
+        return category
+    
+    def read_all(self) -> list:
+        query = f"SELECT name, description, id FROM category;"
+        result_list = super().read(query)
+        categories = []
 
-            cur.execute(f"SELECT NAME, DESCRIPTION, ID FROM category;")
-            result = cur.fetchall()
-            
+        for result in result_list:
+            category = Category(result[0], result[1], result[2])
+            categories.append(category)
 
-            for item in result:
-                category= Category(item[0], item[1], item[2])
-                categories.append(category)
-    except:
-        print('An unexpected error has occurred')
+        return categories
 
-    return categories
+    def update(self, model: Category) -> None:
+        query = f"UPDATE category SET name='{model.name}', description='{model.description}' WHERE id={model.id}"
+        super().execute(query)
 
-
-def upd_category(category: Category) -> None:
-    try:
-        with psycopg2.connect(connection_credentials()) as conn:
-            cur = conn.cursor()
-            cur.execute(f"UPDATE category SET name='{category.name}', description='{category.description}' WHERE id={category.id}")
-    except:
-        print('An unexpected error has occurred')
-
-
-def del_category(id: str) -> None:
-    try:
-        with psycopg2.connect(connection_credentials()) as conn:
-            cur = conn.cursor()
-            cur.execute(f"DELETE FROM category WHERE id={id}")
-    except:
-        print('An unexpected error has occurred')
+    def delete(self, id: int) -> None:
+        query = f"DELETE FROM category WHERE id={id}"
+        super().execute(query)

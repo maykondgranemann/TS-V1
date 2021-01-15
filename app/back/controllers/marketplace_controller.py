@@ -1,20 +1,27 @@
-from app.back.dao.marketplace_dao import del_marketplace, set_marketplace, get_marketplace, upd_marketplace
-from app.back.controllers.log_controller import create_log
-from app.back.models.marketplace import Marketplace
+from app.back.controllers.base_controller import BaseController
+# from app.back.controllers.log_controller import create_log
+from app.back.dao.marketplace_dao import MarketplaceDao
 
-def create_marketplace(marketplace: Marketplace) -> None:
-    set_marketplace(marketplace)
-    create_log(f"Created marketplace {marketplace.name}")
+class MarketplaceController(BaseController):
 
-def read_marketplace() -> list:
-    marketplaces = get_marketplace()
-    create_log(f"Listing marketplaces")
-    return marketplaces
+    def __init__(self, name_entity):
+        self.name_entity = name_entity
+        self.__dao = MarketplaceDao()
+        super().__init__(self.__dao, self.name_entity)
 
-def delete_marketplace(id: str):
-    del_marketplace(id)
-    create_log(f"Deleting marketplace")
+# def create_marketplace(marketplace: Marketplace) -> None:
+#     set_marketplace(marketplace)
+#     create_log(f"Created marketplace {marketplace.name}")
 
-def update_marketplace(marketplace: Marketplace):
-    upd_marketplace(marketplace)
-    create_log(f"Deleting marketplaces")
+# def read_marketplace() -> list:
+#     marketplaces = get_marketplace()
+#     create_log(f"Listing marketplaces")
+#     return marketplaces
+
+# def delete_marketplace(id: str):
+#     del_marketplace(id)
+#     create_log(f"Deleting marketplace")
+
+# def update_marketplace(marketplace: Marketplace):
+#     upd_marketplace(marketplace)
+#     create_log(f"Deleting marketplaces")

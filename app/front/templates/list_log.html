@@ -14,11 +14,24 @@
         <td style="background:#388e3c" >{{log.id}}</td>
         <td style="background:#388e3c" >{{log.date}}</td>
         <td style="background:#388e3c" >{{log.message}}</td>
-      {% else %}
+      {% elif "Listed" in log.message  or "Listing" in log.message %}
         <td style="background:#0277bd" >{{log.id}}</td>
         <td style="background:#0277bd" >{{log.date}}</td>
         <td style="background:#0277bd" >{{log.message}}</td>
-      {% endif %}
+      {% elif "Updated" in log.message %}
+        <td style="background:pink" >{{log.id}}</td>
+        <td style="background:pink" >{{log.date}}</td>
+        <td style="background:pink" >{{log.message}}</td>
+      {% elif "Read" in log.message %}
+        <td style="background:yellow" >{{log.id}}</td>
+        <td style="background:yellow" >{{log.date}}</td>
+        <td style="background:yellow" >{{log.message}}</td>
+      {% elif "Deleted" in log.message or "Deleting" in log.message %}
+        <td style="background:red" >{{log.id}}</td>
+        <td style="background:red" >{{log.date}}</td>
+        <td style="background:red" >{{log.message}}</td>
+
+      {% endif %}    
     </tr>
     {% endfor %}
   </table>

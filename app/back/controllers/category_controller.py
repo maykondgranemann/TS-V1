@@ -1,23 +1,28 @@
-from app.back.dao.category_dao import set_category, get_categories, upd_category, del_category
-from app.back.controllers.log_controller import create_log
-from app.back.models.category import Category
+from app.back.controllers.base_controller import BaseController
+from app.back.dao.category_dao import CategoryDao
 
-def create_category(category: Category) -> None:
-    set_category(category)
-    create_log(f"Created category {category.name}")
+class CategoryController(BaseController):
+
+    def __init__(self, name_entity):
+        self.name_entity = name_entity
+        self.__dao = CategoryDao()
+        super().__init__(self.__dao, self.name_entity)
+
+    # def create_category(category: Category) -> None:
+    #     super().create(category)
+    #     create_log(f"Created category {category.name}")
+
+    # def read_categories() -> list:
+    #     result = super().read()
+    #     create_log(f"Listing categories")
+    #     return result
+
+    # def update_category(category: Category) -> None:
+    #     super().update(category)
+    #     create_log(f"Updated category {category.name}")
+
+    # def delete_category(id: str):
+    #     super().delete(id)
+    #     create_log(f"Deleted category {id}")
 
 
-def read_categories() -> list:
-    categories = get_categories()    
-    create_log(f"Listing categories")
-    return categories
-
-
-def update_category(category: Category) -> None:
-    upd_category(category)
-    create_log(f"Updated category {category.name}")
-
-
-def delete_category(id: str):
-    del_category(id)
-    create_log(f"Deleted category {id}")
