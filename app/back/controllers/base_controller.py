@@ -26,7 +26,6 @@ class BaseController:
         self.__dao.delete(id)
         log.create(f"Deleted {self.name_entity} - {object.name}")
 
-
     def update(self, model: object) -> None:
         self.__dao.update(model)
         log.create(f"Updated {self.name_entity} - {model.name}")
