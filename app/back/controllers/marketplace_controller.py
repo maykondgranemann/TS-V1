@@ -3,7 +3,6 @@ from app.back.controllers.base_controller import BaseController
 from app.back.dao.marketplace_dao import MarketplaceDao
 
 class MarketplaceController(BaseController):
-
     def __init__(self, name_entity):
         self.name_entity = name_entity
         self.__dao = MarketplaceDao()
