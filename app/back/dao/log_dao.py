@@ -7,7 +7,6 @@ class LogDao(BaseDao):
         query = f"INSERT INTO log (message) VALUES ('{date_message}');"
         super().execute(query)
 
-
     def read_all(self) -> list:
         query = f"SELECT message, id FROM log;"
         result_list = super().read(query)
