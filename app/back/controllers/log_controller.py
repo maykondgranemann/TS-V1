@@ -15,14 +15,3 @@ class LogController():
 
     def read_all(self) -> list:
         return self.__dao.read_all()
-
-# def create_log(message) -> None:
-#     date = datetime.now()
-#     date = date.strftime('%d/%m/%Y - %H:%M:%S')
-
-#     log = Log(date, message)
-
-#     set_log(log)
-    
-# def read_logs() -> list:
-#     return get_log()
