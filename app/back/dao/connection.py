@@ -9,9 +9,7 @@ class Connection:
             for line in file:
                 treated_line = line.strip()
                 credentials.append(treated_line)
-                
         return credentials
-
 
     def __connection_credentials(self) -> str:
         credentials = self.__get_credential()
@@ -21,16 +19,13 @@ class Connection:
         password = credentials[3]
         return f'host={host} user={user} dbname={database} password={password}'
 
-
     def __enter__(self):
         self.__connection = psycopg2.connect(self.__connection_credentials())
         return self.__connection
 
-
     def __exit__(self, type, value, trace):
         self.__connection.close()
 
-        
     def set_database(self):
         try:
             with psycopg2.connect(self.__connection_credentials()) as conn:
