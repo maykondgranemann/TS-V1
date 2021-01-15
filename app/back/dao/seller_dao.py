@@ -10,13 +10,11 @@ class SellerDao(BaseDao):
                     ('{model.name}', '{model.telephone}', '{model.email}'); """
         super().execute(query)
 
-
     def read_by_id(self, id: int) -> Seller:
         query = f"SELECT name, telephone, email, id FROM seller WHERE id = {id};"
         result = super().read(query)[0]
         marketplace = Seller(result[0], result[1], result[2], result[3])
         return marketplace
-
 
     def read_all(self) -> list:
         query = f"SELECT id, name, telephone, email FROM seller;"
@@ -27,11 +25,9 @@ class SellerDao(BaseDao):
             sellers.append(seller)
         return sellers
 
-
     def delete(self, id:int) -> None:
         query = f"DELETE FROM seller WHERE id = {id};"
         super().execute(query)
-
 
     def update(self, model: Seller) -> None:
         query = f"""UPDATE seller 
