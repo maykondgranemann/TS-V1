@@ -30,20 +30,7 @@ class Connection:
     def __exit__(self, type, value, trace):
         self.__connection.close()
 
-
-
-
-
-
-
-
-
-
-    
-
-    
-
-
+        
     def set_database(self):
         try:
             with psycopg2.connect(self.__connection_credentials()) as conn:
@@ -57,12 +44,3 @@ class Connection:
                 conn.commit()
         except:
             print('An unexpected error has occurred')
-
-
-    def __enter__(self):
-        self.__connection = psycopg2.connect(self.__connection_credentials())
-        return self.__connection
-
-
-    def __exit__(self, type, value, trace):
-        self.__connection.close()
