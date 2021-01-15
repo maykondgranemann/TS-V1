@@ -1,7 +1,6 @@
 from app.back.models.product import Product
 from .base_dao import BaseDao
 
-
 class ProductDao(BaseDao):
     def create(self, model: Product) -> None:
         query = f"INSERT INTO product (name, description, price) VALUES ('{model.name}', '{model.description}', '{model.price}');"
@@ -30,3 +29,4 @@ class ProductDao(BaseDao):
     def delete(self, id: int) -> None:
         query = f"DELETE FROM product WHERE id={id}"
         super().execute(query)
+        
