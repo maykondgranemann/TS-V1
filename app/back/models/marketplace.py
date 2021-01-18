@@ -17,6 +17,10 @@ class Marketplace:
     def description(self):
         return self.__description
     
+    @id.setter
+    def id(self, id):
+        self.__id = id
+        
     @name.setter
     def name(self, name):
         self.__name = name
