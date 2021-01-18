@@ -1,35 +1,35 @@
 class Product:
 
     def __init__(self, name: str, description: str, price: float, id: int = None):
-        self.name = name
-        self.description = description
-        self.price = price
-        self.id = id
+        self.__name = name
+        self.__description = description
+        self.__price = price
+        self.__id = id
     
     @property
     def id(self):
-        return self.id
+        return self.__id
     
     @property
     def name(self):
-        return self.name
+        return self.__name
 
     @property
     def description(self):
-        return self.description
+        return self.__description
 
     @property
     def price(self):
-        return self.price
+        return self.__price
 
     @name.setter
     def name(self, name):
-        self.name = name
+        self.__name = name
     
     @description.setter
     def description(self, description):
-        self.description = description
+        self.__description = description
    
     @price.setter
     def price(self, price):
-        self.price = price
+        self.__price = price
