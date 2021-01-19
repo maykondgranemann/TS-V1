@@ -7,10 +7,10 @@ from sqlalchemy import create_engine
 class Session:
     def __init__(self) -> None:
         connector = 'postgresql'
-        host = 'pgsql08-farm15.uni5.net'
-        user = 'topskills10'
-        password = 'olist123'
-        dbname = 'topskills10'
+        host = os.getenv('DB_HOST')
+        user = os.getenv('DB_USER')
+        password = os.getenv('DB_PASSWORD')
+        dbname = os.getenv('DB_NAME')
         self.__conn_string = f"{connector}://{user}:{password}@{host}:5432/{dbname}"
 
     def __enter__(self):

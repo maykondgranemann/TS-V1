@@ -7,10 +7,7 @@ CONTROLLER = SellerController()
 #seller = SellerModel('Josué Ávila', '41997879889', 'josue.avila@olist.com')
 #CONTROLLER.save(seller)
 
-seller = CONTROLLER.read_by_id(9)
-seller.fullname = 'Josué Rosa de Ávila'
-CONTROLLER.save(seller)
-
+load_dotenv()
 result = CONTROLLER.read_all()
 for seller in result:
     print(seller.id, seller.fullname, seller.phone, seller.email)
