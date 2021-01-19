@@ -1,6 +1,3 @@
-import sys
-sys.path.append('.')
-
 from backend.dao.seller_dao import SellerDao
 from backend.controllers.base_controller import BaseController
 

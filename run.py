@@ -1,8 +1,5 @@
-import sys
-sys.path.append('.')
-
-from controller.seller_controller import SellerController
-from models.seller_model import Seller
+from backend.controllers.seller_controller import SellerController
+from backend.models.seller_model import Seller
 
 seller = Seller('Ada', 'a@a.com', '11-111111')
 
@@ -16,7 +13,4 @@ for seller in sellers:
 
 # delete
 #SellerController().delete(sellers[1])
-
-
-
 
