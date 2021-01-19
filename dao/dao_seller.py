@@ -1,21 +1,13 @@
 # Importar a da model a model_seller
 from ..model.model_seller import Seller
 
+# Importar da dao_base a classe DaoBase
+from .dao_base import DaoBase
+
 # Importar a função da sessão através do session.py
 from .session import Session
 
 # Criar uma classe para acessar o BD 
-class SellerDao:
-    def save(self, model:Seller) -> None:
-        self.__session.add(model)
-        self.__session.commit()
-
-    def read_all(self) -> list:
-        return self.__session.query(Seller).all()
-
-    def read_by_id(self, id_:int) -> Seller:
-        return self.__session(Seller).filter_by(id=id).first()
-
-    def delete(self, model: Seller) -> None:
-        self.__session.delete(model)
-        self.__session.commit()
+class SellerDao(DaoBase):
+    def __init__(self):
+        pass
