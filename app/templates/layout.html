@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <title>Sellers Alchemy</title>
+    <script src="{{ url_for('static', filename='phone_mask.js') }}"></script>
+</head>
+<body {% block body_tags %}{% endblock %}>
+<div class="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-4 lg:px-4">
+    {% block content %}
+    {% endblock %}
+</div>
+</body>
+</html>
