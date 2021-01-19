@@ -32,7 +32,7 @@ def save_seller():
     phone = request.args.get('phone')
     email = request.args.get('email')
     seller = Seller(name, email, phone)
-    SellerController().create(seller)
+    SellerController().save_seller(seller)
     return render_template('success.html')
 
 @app.route('/delete_seller')
@@ -51,6 +51,12 @@ def update_seller():
 
 @app.route('/update_seller', methods=['POST'])
 def save_update_seller():
+    id = request.form.get('id')
+    s = SellerController().read_id(id)
+    s.name = request.form.get('name')
+    s.phone = request.form.get('phone')
+    s.email = request.form.get('email')
+    SellerController().save_seller(s)
     return redirect('/listseller')      
 
 app.run(debug=True)

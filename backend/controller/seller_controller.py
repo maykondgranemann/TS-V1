@@ -5,7 +5,7 @@ from backend.models.seller import Seller
 from backend.dao.seller_dao import SellerDao
 
 class SellerController:
-    def create(self, obj: Seller) -> None:
+    def save_seller(self, obj: Seller) -> None:
         SellerDao().save(obj)
 
 
