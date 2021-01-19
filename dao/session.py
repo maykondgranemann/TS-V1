@@ -28,4 +28,5 @@ class Session:
 # Criar uma função de fechamento de conexaõ com __exit__
 # Esta deverá conter .dispose() e .close()
     def __exit__(self, type, value, trace):
-        pass
+        self.__session.close()
+        self.__session.dispose()
