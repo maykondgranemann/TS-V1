@@ -1,0 +1,27 @@
+{% extends "index.html" %}
+{% block body %}
+<br/>
+<div class="container">
+    <table class="table table-striped">
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Telefone</th>
+            <th>Email</th>
+            <th>Ação</th>
+        </tr>
+        {% for seller in sellers %}
+        <tr>
+            <td>{{ seller.id }}</td>
+            <td>{{ seller.name }}</td>
+            <td>{{ seller.phone }}</td>
+            <td>{{ seller.email }}</td>
+            <td>
+                <a type="button" class="btn btn-primary btn-sm" href="/sellers/{{ seller.id }}">Editar</a>
+                <a type="button" class="btn btn-danger btn-sm" href="/sellers/{{ seller.id }}/delete">Apagar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+    {% endblock %}
