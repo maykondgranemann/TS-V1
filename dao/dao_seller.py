@@ -8,3 +8,13 @@ from .dao_base import DaoBase
 class SellerDao(DaoBase):
     def __init__(self):
         super().__init__(Seller)
+
+
+        
+
+seller = Seller('novo seller', 'novo email', 'novo phone')
+
+SellerDao().save(seller)
+
+for s in SellerDao().read_all():
+    print(s.id, s.name, s.email, s.phone)

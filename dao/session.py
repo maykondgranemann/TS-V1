@@ -20,8 +20,8 @@ class Session:
 
 # Criar uma função de inicialização com __enter__
     def __enter__(self):
-        engine = create_engine(self.__conn_string)
-        Session = sessionmaker(engine)
+        self.__engine = create_engine(self.__conn_string)
+        Session = sessionmaker(self.__engine)
         self.__session = Session()
         return self.__session
 

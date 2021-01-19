@@ -6,7 +6,7 @@ from .session import Session
 
 # Criar classe base para a DAO 
 class DaoBase:
-    def __init__(self, type_model):
+    def __init__(self, type_model) -> None:
         self.__type_model = type_model
 
     def save(self, model:BaseModel) -> None:
