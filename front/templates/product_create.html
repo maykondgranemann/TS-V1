@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}List Products{% endblock %}
+{% block body %}
+    <form>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID: </th>
+                    <th>Name: </th>
+                    <th>Description: </th>
+                    <th>Price: </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input type="text" id="id" value="" readonly></td>
+                    <td><input type="text" id="name" value=""></td>
+                    <td><input type="text" id="description" value=""></td>
+                    <td><input type="text" id="price" value=""></td>
+                </tr>
+            </tbody>
+        </table>
+        <div>
+            <button formaction="/">Back</button>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}List Products{% endblock %}
+{% block body %}
+    <form>
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                <tr>
+                    <td><input id="teste" type="radio" name="product_id" value="{{product.id}}"></td>
+                    <td>{{product.id}}</td>
+                    <td>{{product.name}}</td>
+                    <td>{{product.description}}</td>
+                    <td>{{product.price}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div>
+            <button formaction="/product/create">Create</button>
+            <button formaction="/product/update">Update</button>
+            <button formaction="/product/delete">Delete</button>
+            <button formaction="/">Back</button>
+        </div>
+    </form>
+{% endblock %}

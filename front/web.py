@@ -18,41 +18,17 @@ def index():
 
 @app.route('/product')
 def read_products():
-    return render_template('product_read.html')
+    result = ProductController().read_all()
+    return render_template('product_read.html', products=result)
 
 @app.route('/product/create')
 def create_product():
     return render_template('product_create.html')
 
-@app.route('/product/<id>/update')
+@app.route('/product/update')
 def update_product():
     return render_template('product_update.html')
 
-@app.route('/product/<id>/delete')
+@app.route('/product/delete')
 def delete_product():
     return render_template('product_delete.html')
-
-
-
-seller = Seller('Lucas', '219999999999', 'lucas@olist.com')
-
-SellerController().create(seller)
-
-seller = SellerController().read_by_id(46)
-
-print(seller)
-
-seller.name = "Lucas João"
-
-SellerController().update(seller)
-
-seller = SellerController().read_by_id(46)
-
-print(seller)
-
-#SellerController().delete(seller)
-
-sellers = SellerController().read_all()
-
-for s in sellers:
-    print(s)
