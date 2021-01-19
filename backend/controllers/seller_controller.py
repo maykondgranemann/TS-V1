@@ -1,11 +1,12 @@
 from backend.dao.seller_dao import SellerDao
+from backend.models.base_model import BaseModel
 
 
 class SellerController:
     def __init__(self):
         self.dao = SellerDao()
 
-    def save(self, model: object) -> None:
+    def save(self, model: BaseModel) -> None:
         self.dao.save(model)
 
     def read_all(self) -> list:
@@ -16,5 +17,5 @@ class SellerController:
         result = self.dao.read_by_id(id)
         return result
 
-    def delete(self, model: object) -> None:
+    def delete(self, model: BaseModel) -> None:
         self.dao.delete(model)

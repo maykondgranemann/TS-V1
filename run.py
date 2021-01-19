@@ -1,11 +1,8 @@
 from dotenv import load_dotenv
 from backend.controllers.seller_controller import SellerController
-from backend.models.seller import SellerModel
 
 CONTROLLER = SellerController()
 
-#seller = SellerModel('Josué Ávila', '41997879889', 'josue.avila@olist.com')
-#CONTROLLER.save(seller)
 
 load_dotenv()
 result = CONTROLLER.read_all()
