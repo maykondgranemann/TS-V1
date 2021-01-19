@@ -13,20 +13,23 @@ seller_controller = SellerController()
 def index():
     return render_template('index.html')
 
-@app.route('/sellers', methods=["GET", "POST"])
+@app.route('/sellers/create', methods=['GET'])
+def new_seller():
+    return render_template('create_seller.html')
+
+@app.route('/sellers', methods=['GET'])
 def list_sellers():
-    if request.method == "POST":
-        name = request.form.get('name')
-        phone = request.form.get('phone')
-        email = request.form.get('email')
-        seller = Seller(name, phone, email)
-        seller_controller.create(seller)
     sellers = seller_controller.read_all()
     return render_template('list_sellers.html', sellers=sellers)
 
-@app.route('/create_seller')
-def new_seller():
-    return render_template('create_seller.html')
+@app.route('/sellers', methods=['POST'])
+def create_seller():
+    name = request.form.get('name')
+    phone = request.form.get('phone')
+    email = request.form.get('email')
+    seller = Seller(name, phone, email)
+    seller_controller.create(seller)
+    return redirect(url_for('list_sellers'))
 
 @app.route('/sellers/<int:id>', methods=['GET', 'POST'])
 def edit_seller(id: int):
