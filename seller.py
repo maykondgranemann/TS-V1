@@ -23,6 +23,7 @@ def menu():
     op = int(input('Selecione uma opção: '))
     return op
 
+
 def main():
     conector='postgresql'
     host='pgsql08-farm15.uni5.net'
