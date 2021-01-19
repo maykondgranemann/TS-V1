@@ -16,4 +16,4 @@ class Seller(BaseModel):
         self.email = email
 
     def __str__(self):
-        return f'Seller Name: {self.name}'
+        return f'Seller Name: {self.name} - Seller id: {self.id}'
