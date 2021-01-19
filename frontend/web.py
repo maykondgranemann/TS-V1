@@ -1,14 +1,11 @@
-from flask import Flask, render_template, request,redirect
 import sys
-
-from sqlalchemy.orm import backref
 sys.path.append('.')
 
+from flask import Flask, render_template, request,redirect
 from backend.controller.seller_controller import SellerController
 from backend.models.seller import Seller
 
 app = Flask(__name__)
-app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 
 @app.route('/')
