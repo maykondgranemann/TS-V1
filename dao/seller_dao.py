@@ -1,5 +1,3 @@
-import sys
-sys.path.append('.')
 from model.seller_model import Seller
 from dao.base_dao import BaseDao
 
@@ -17,8 +15,8 @@ class SellerDao(BaseDao):
 # SellerDao().save(obj_seller)
 
 ##TEST-LIST ALL##
-# for item in SellerDao().read_all():
-#     print(item.id, item.name, item.phone, item.email)
+for item in SellerDao().read_all():
+    print(item.id, item.name, item.phone, item.email)
 
 # TEST-LIST BY ID
 # result = SellerDao().read_by_id(13)
