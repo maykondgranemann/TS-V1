@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ name }}</title>
+</head>
+<body>
+    <h1>{{ nome }}{% block title %}{% endblock %}</h1>
+    {% block body %}
+
+    {% endblock %}
+</body>
+{% block footer %}
+<ul>
+  <a href="/">Go Back</a>
+  <a href="http://www.olist.com/"><b>olist</b></a>
+</ul>
+{% endblock footer %}
+</html>

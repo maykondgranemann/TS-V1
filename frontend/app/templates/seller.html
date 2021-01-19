@@ -1,0 +1,35 @@
+{% extends 'template.html' %}
+{% block body %}
+<h2 class="title_product">List Sellers</h2>
+<table style="width:100%">
+
+    <tr>
+        <th>Name</th>
+        <th>E-mail</th>
+        <th>Phone number</th>
+    </tr>
+
+    {% for seller in sellers%}
+    <tr>
+        <td>{{ seller.fullname }}</td>
+        <td>{{ seller.email }}</td>
+        <td>{{ seller.phone }}</td>
+        <td>
+            <a href="/sellers/update?id={{seller.id}}">
+                Edit
+            </a>
+        </td>
+        <td>
+            <a href="/sellers/delete?id={{seller.id}}">
+                Delete
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+<br>
+<a href="/">Go back</a>
+{% endblock %}
+{% block footer %}
+{% endblock footer %}

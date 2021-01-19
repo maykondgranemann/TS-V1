@@ -1,0 +1,39 @@
+{% extends 'template.html' %}
+{% block body %}
+{% if edit %}
+<h1>'Update Seller'</h1>
+<form action="/sellers/update" method="post">
+    <label>
+        Fullname:
+    </label>
+    <input name="fullname" value="{{ seller.fullname }}" type="text"/>
+    <label>
+        E-mail:
+    </label>
+    <input name="email" value="{{ seller.email }}" type="text"/>
+    <label>
+        Phone:
+    </label>
+    <input name="phone_number" value="{{ seller.phone }}" type="number"/>
+    <input name="id" value="{{ seller.id }}" type="hidden"/>
+    <input required type="submit" value="save"/>
+</form>
+{% else %}
+<h1>'Create Seller'</h1>
+<form action="/sellers">
+    <label>
+        Fullname:
+    </label>
+    <input name="fullname" value="" type="text"/>
+    <label>
+        E-mail:
+    </label>
+    <input name="email" value="" type="text"/>
+    <label>
+        Phone:
+    </label>
+    <input name="phone_number" value="" type="number"/>
+    <input required type="submit" value="save"/>
+</form>
+{% endif %}
+{% endblock %}

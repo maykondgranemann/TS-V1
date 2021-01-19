@@ -1,0 +1,12 @@
+{% extends 'template.html' %}
+{% block body %}
+    <ul>
+    {% for i in list %}
+    <li>
+        <a href="{{ i['route'] }}">{{ i['name'] }}</a>
+    </li>
+    {% endfor %}
+    </ul>
+{% endblock %}
+{% block footer %}
+{% endblock footer %}
