@@ -1,0 +1,21 @@
+{% extends "index.html" %}
+{% block body %}
+<br/>
+<form action="/sellers/{{ seller.id }}" method="POST">
+    <div class="container d-grid gap-3">
+        <div class="col-auto">
+            <label for="name" class="form-label">Nome</label>
+            <input type="text" class="form-control" value="{{ seller.name }}" name="name" required>
+        </div>
+        <div class="col-auto">
+            <label for="phone" class="form-label">Telefone</label>
+            <input type="text" class="form-control" value="{{ seller.phone }}" name="phone" required>
+        </div>
+        <div class="col-auto">
+            <label for="email" class="form-label">Email</label>
+            <input type="text" class="form-control" value="{{ seller.email }}" name="email" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    </div>
+  </form>
+{% endblock %}
