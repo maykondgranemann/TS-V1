@@ -12,3 +12,10 @@ class Seller(BaseModel):
     name = Column(String(length=(100)))
     email = Column(String(length=(30)))
     phone = Column(String(length=(18)))
+
+# Criar uma função __init__ com as propriedades definidas
+    def __init__(self, name: str, email: str, phone: str, id_: int=None):
+        self.name = name
+        self.email = email
+        self.phone = phone
+        self.id_ = id_
