@@ -5,5 +5,5 @@ Base = declarative_base()
 
 
 class BaseModel(Base):
-    ___abtract__ = True
+    __abstract__ = True
     id = Column(Integer, primary_key=True)
