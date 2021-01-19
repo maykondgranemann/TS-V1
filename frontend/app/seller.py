@@ -12,6 +12,21 @@ def list_all_sellers():
     return render_template('seller.html', name='olist', sellers=sellers)
 
 
+@seller.route('/sellers/create')
+def create_seller():
+    fullname = request.args.get('fullname')
+    email = request.args.get('email')
+    phone = request.args.get('phone_number')
+    seller = Seller(fullname, phone, email)
+    print(seller.fullname, seller.phone, seller.email)
+    if (fullname is None) and (email is None) and (phone is None):
+        pass
+    else:
+        CONTROLLER.save(seller)
+        return redirect('/sellers')
+    return render_template('seller_form.html', name='olist')
+
+
 @seller.route('/sellers/update')
 def update_get():
     id_ = request.args.get('id')
@@ -21,9 +36,18 @@ def update_get():
 
 @seller.route('/sellers/update', methods=['POST'])
 def update_post():
-    fullname = request.form.get('fullname')
-    email = request.form.get('email')
-    phone = request.form.get('phone_number')
-    seller = Seller(fullname, phone, email)
+    id_ = request.form.get('id')
+    seller = CONTROLLER.read_by_id(id_)
+    seller.fullname = request.form.get('fullname')
+    seller.email = request.form.get('email')
+    seller.phone = request.form.get('phone_number')
     CONTROLLER.save(seller)
+    return redirect('/sellers')
+
+
+@seller.route('/sellers/delete')
+def delete():
+    id_ = request.args.get('id')
+    seller = CONTROLLER.read_by_id(id_)
+    CONTROLLER.delete(seller)
     return redirect('/sellers')
