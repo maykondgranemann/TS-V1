@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+{% block body_tags %}onload="mask_form();"{% endblock %}
+{% block content %}
+    <form class="space-y-4 text-gray-700" action="/seller/create" method="post">
+        <div>
+            <a href="/">
+                <img class="mx-auto h-20" src="{{ url_for('static', filename='olist.png') }}"
+                     alt="olist">
+            </a>
+            <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+                {% if update %}Update{% else %}New{% endif %} Seller
+            </h2>
+        </div>
+        <div class="flex flex-wrap">
+            <div class="w-full">
+                <label class="block mb-1" for="fullname">Full Name</label>
+                <input class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
+                       type="text" name="fullname" id="fullname"
+                       {% if update %}value="{{ seller.fullname }}"{% endif %}/>
+            </div>
+        </div>
+        <div class="flex flex-wrap -mx-2 space-y-4 md:space-y-0">
+            <div class="w-full px-2 md:w-1/2">
+                <label class="block mb-1" for="email">E-Mail</label>
+                <input class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
+                       type="text" name="email" id="email" {% if update %}value="{{ seller.email }}"{% endif %}/>
+            </div>
+            <div class="w-full px-2 md:w-1/2">
+                <label class="block mb-1" for="phone">Phone</label>
+                <input class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:shadow-outline"
+                       type="text" name="phone" id="phone" {% if update %}value="{{ seller.phone }}"{% endif %}
+                       onblur="mask_value(this, mphone);" onkeypress="mask_value(this, mphone);"/>
+            </div>
+        </div>
+        <br>
+        {% if update %}
+            <button type="submit" formaction="/seller/update/{{ seller.id }}"
+                    class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Update
+            </button>
+        {% else %}
+            <button type="submit"
+                    class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Submit
+            </button>
+        {% endif %}
+    </form>
+{% endblock %}
