@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <ul>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Edit/Delete</th>
+            </tr>
+            {% for s in seller %}
+                <tr>
+                    <td>{{ s.name }}</td>
+                    <td>{{ s.phone }}</td>
+                    <td>{{ s.email }}</td>
+                    <td>
+                    <a href="/update_seller?id={{s.id}}"> edit </a> 
+                    <a href="/delete_seller?id={{s.id}}"> delete </a> 
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </ul>
+{% endblock %}

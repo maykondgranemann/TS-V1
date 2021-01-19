@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% if update %}
+<h2> Update Seller </h2>
+<form action="/update_seller" method="post">
+    <input name="id" value="{{id}}" type="number" hidden><br>
+
+    <label>Name: </label>
+    <input name="name" value="{{name}}" type="text" ><br>
+
+    <label>Phone: </label>
+    <input name="phone" value="{{phone}}" type="text"><br>
+
+    <label>Email: </label>
+    <input name="email" value="{{email}}" type="text"><br>
+
+    <input type="submit" value="save" />
+</form>
+{%else%}
+<form action="/seller">
+    <label>Name: </label>
+    <input type="text" name="name"><br>
+
+    <label>Phone: </label>
+    <input type="text" name="phone"><br>
+
+    <label>Email: </label>
+    <input type="text" name="email"><br>
+
+    <input type="submit" value="save" />
+</form>
+{%endif%}
+{% endblock %}
