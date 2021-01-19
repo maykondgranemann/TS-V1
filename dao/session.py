@@ -15,11 +15,15 @@ class Session:
 
 # A conn_string também segue uma estrutura diferente
 # A mesma deve apontar o conector ao ususário depois pass at host a porta e o nome do BD
-        conn_string = f"{conector}://{user}:{password}@{host}:5432/{dbname}"
+# Estabelecendo a conexão como privada no através do self
+        self.__conn_string = f"{conector}://{user}:{password}@{host}:5432/{dbname}"
 
 # Criar uma função de inicialização com __enter__
     def __enter__(self):
-        pass
+        engine = create_engine(self.__conn_string)
+        Session = sessionmaker(engine)
+        self.__session = Session()
+        return self.__session
 
 # Criar uma função de fechamento de conexaõ com __exit__
 # Esta deverá conter .dispose() e .close()
