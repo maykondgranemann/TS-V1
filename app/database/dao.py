@@ -1,11 +1,11 @@
-from typing import ClassVar
+from typing import Type
 
 from app.database.models import BaseModel
 from app.database.session import Session
 
 
 class BaseDao:
-    def __init__(self, model_type: ClassVar):
+    def __init__(self, model_type: Type):
         self.__model_type = model_type
 
     @staticmethod
