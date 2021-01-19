@@ -17,9 +17,10 @@ def read_all() -> List[Seller]:
 
 
 def read_by_id(id: int) -> Seller:
-    result = DAO.read_by_id(id)
-    if result is None:
-        raise SellerNotFoundException
+    try:
+        result = DAO.read_by_id(id)
+    except SellerNotFoundException:
+        raise Exception('Seller not found.')
     return result
 
 
