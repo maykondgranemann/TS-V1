@@ -9,10 +9,3 @@ class SellerDao(BaseDao):
     def __init__(self):
         super().__init__(Seller)
 
-teste = Seller('Antonio', '7616652124', 'antonio@gmail.com')
-print(teste)
-
-SellerDao().save(teste)
-
-for sellers in SellerDao().read_all():
-    print(sellers.id, sellers.name, sellers.phone, sellers.email)

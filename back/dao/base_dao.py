@@ -15,13 +15,18 @@ class BaseDao:
 
     def read_all(self) -> list:
         with Session() as session:
-            result = session.query(self.__type_model).all()
-        return result
+            sellers = session.query(self.__type_model).all()
+        return sellers
 
     def read_by_id(self, id:int) -> BaseModel:
         with Session() as session:
-            result = session.query(self.__type_model).filter_by(id=id).first()
-        return result
+            seller = session.query(self.__type_model).filter_by(id=id).first()
+        return seller
+
+    def update(self, model:BaseModel) -> None:
+        with Session() as session:
+            session.add(model)
+            session.commit()
 
     def delete(self, model:BaseModel)-> None:
         with Session() as session:
