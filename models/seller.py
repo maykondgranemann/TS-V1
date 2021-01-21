@@ -1,5 +1,5 @@
-from sqlalchemy import db
-from base_model import BaseModel
+import sqlalchemy as db
+from models.base_model import BaseModel
 
 
 class Seller(BaseModel):
@@ -13,3 +13,6 @@ class Seller(BaseModel):
         self.name = name
         self.phone = phone
         self.email = email
+
+    def __str__(self):
+        return f'{self.id} - {self.name} - {self.phone} - {self.email}'
