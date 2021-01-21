@@ -3,15 +3,15 @@ from sqlalchemy.orm import sessionmaker
 
 class Session:
     def __init__(self) -> None:
-        conector = 'postgresql'
+        connector = 'postgresql'
         host = 'pgsql08-farm15.uni5.net'
-        user = 'topskills12'
-        password = 'olist21'
-        dbname = 'topskills12'
-        self.__conn_string = f"{conector}://{user}:{password}@{host}:5432/{dbname}"
+        user = 'topskills13'
+        password = 'olist123'
+        dbname = 'topskills13'
+        self.__connection_string = f"{connector}://{user}:{password}@{host}:5432/{dbname}"
     
     def __enter__(self):
-        self.__engine = create_engine(self.__conn_string)
+        self.__engine = create_engine(self.__connection_string)
         Session = sessionmaker(self.__engine)
         self.__session = Session()
         return self.__session
