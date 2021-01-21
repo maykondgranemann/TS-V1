@@ -1,5 +1,6 @@
-from ..controllers.base_controller import BaseController
-from ..dao.sellers_dao import SellerDao
+from app.back.controllers.base_controller import BaseController
+from app.back.dao.sellers_dao import SellerDao
+
 
 class SellerController(BaseController):
     def __init__(self)-> None:

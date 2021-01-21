@@ -8,12 +8,10 @@ class BaseController:
         # self.__log_controller = LogController()
 
     def create(self, model:object)-> None:
-        request = self.__dao.save(model)
+        self.__dao.save(model)
 
         # log = Log("Saved", self.__dao.entity())
         # self.__log_controller.create(log)
-
-        return request
 
     def read_by_id(self,id:int)-> object:
         return self.__dao.read_by_id(id)
