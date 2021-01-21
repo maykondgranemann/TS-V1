@@ -18,7 +18,7 @@ class BaseDao:
 
     def read_all(self) -> list:
         with Session() as session:
-            result = session.query(self.type_model).all()
+            result = session.query(self.type_model).order_by('id').all()
         return result
 
     def read_by_id(self, id: int) -> BaseModel:
