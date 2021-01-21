@@ -5,8 +5,9 @@ class BaseController:
     def __init__(self, dao):
         self.dao = dao()
 
-    def save(self, model: BaseModel) -> None:
-        self.dao.save(model)
+    def save(self, model: BaseModel) -> tuple:
+        result = self.dao.save(model)
+        return result
 
     def read_all(self) -> list:
         result = self.dao.read_all()
@@ -16,5 +17,6 @@ class BaseController:
         result = self.dao.read_by_id(id)
         return result
 
-    def delete(self, model: BaseModel) -> None:
-        self.dao.delete(model)
+    def delete(self, model: BaseModel) -> bool:
+        result = self.dao.delete(model)
+        return result
