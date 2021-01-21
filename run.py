@@ -3,13 +3,15 @@ from back.models.seller import Seller
 
 #Create
 
-#seller = Seller('Anonimo3', '761665212423', 'anonimo3@gmail.com')
+#seller = Seller('Anonimo5', '76166521242345', 'anonimo5@gmail.com')
 #SellerController().save(seller)
-#print(seller)
+
+#for sellers in SellerController().read_all():
+    #print(sellers.id, sellers.name, sellers.phone, sellers.email)
 
 #Read by id
 
-#seller = SellerController().read_by_id(20)
+#seller = SellerController().read_by_id(32)
 #print(seller)
 
 #Read All
@@ -19,21 +21,21 @@ from back.models.seller import Seller
 
 #Update
 
-#seller = SellerController().read_by_id(19)
+#seller = SellerController().read_by_id(29)
 
 #print(seller)
 
-#seller.name = "teste3"
+#seller.name = "teste4"
 
 #SellerController().update(seller)
 
-#seller = SellerController().read_by_id(19)
+#seller = SellerController().read_by_id(29)
 
 #print(seller)
 
 #Delete
 
-#seller = SellerController().read_by_id(20)
+#seller = SellerController().read_by_id(18)
 
 #print(seller)
 

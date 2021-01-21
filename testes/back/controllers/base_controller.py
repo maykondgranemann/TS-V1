@@ -2,19 +2,21 @@ from back.models.base_model import BaseModel
 
 class BaseController:
     def __init__(self, dao):
-        self.__dao = dao
+        self.dao = dao()
 
     def save(self, model: BaseModel) -> None:
-        self.__dao.save(model)
+        self.dao.save(model)
 
     def read_all(self) -> list:
-        return self.__dao.read_all()
+        result = self.dao.read_all()
+        return result
 
     def read_by_id(self, id: int) -> object:
-        return self.__dao.read_by_id(id)
+        result = self.dao.read_by_id(id)
+        return result
 
     def update(self, model: BaseModel) -> None:
-        self.__dao.update(model)
+        self.dao.update(model)
 
     def delete(self, model: BaseModel) -> None:
-        self.__dao.delete(model)
+        self.dao.delete(model)

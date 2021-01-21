@@ -1,6 +1,9 @@
 from back.models.base_model import BaseModel
 from back.dao.session import Session
 
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+
 class BaseDao:
     def __init__(self, type_model):
         self.__type_model = type_model
