@@ -16,7 +16,3 @@ class TestSellerModel:
         assert seller.name is self.seller_name
         assert seller.phone is self.seller_phone
         assert seller.email is self.seller_email
-
-test = TestSellerModel()
-result = test.test_atributes()
-print(result)

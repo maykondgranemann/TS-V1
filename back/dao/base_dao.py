@@ -1,5 +1,5 @@
-from models.base_model import BaseModel
-from dao.session import Session
+from back.models.base_model import BaseModel
+from back.dao.session import Session
 
 
 class BaseDao:
@@ -17,11 +17,17 @@ class BaseDao:
         return result
 
     def read_by_id(self, id: int) -> BaseModel:
-        with Session() as session:
-            model = session.query(self.__type_model).filter_by(id=id).first()
-        return model
-
+        try:
+            with Session() as session:
+                model = session.query(self.__type_model).filter_by(id=id).first()
+            return model
+        except:
+            raise NameError('Error, id must be an integer')
+            
     def delete(self, model: BaseModel) -> None:
-        with Session() as session:
-            session.delete(model)
-            session.commit()
+        try:
+            with Session() as session:
+                session.delete(model)
+                session.commit()
+        except:
+            raise NameError('Error, id must be an object')
