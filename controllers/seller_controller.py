@@ -1,6 +1,3 @@
-import sys
-sys.path.append('.')
-
 from controllers.base_controller import BaseController
 from dao.seller_dao import SellerDao
 from models.seller import Seller
@@ -31,7 +28,8 @@ print(seller.id, seller.name, seller.telephone, seller.email)
 seller = SellerDao().read_by_id(1)
 SellerDao().delete(seller)
 
-"""
+
 #read_all
 for seller in SellerController().read_all():
     print(seller.id, seller.name, seller.telephone, seller.email)
+"""

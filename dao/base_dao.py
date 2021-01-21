@@ -6,10 +6,13 @@ class BaseDao:
     def __init__(self, type_model) -> None:
         self.__type_model = type_model
     
-    def save(self, model:BaseModel) -> None:
+    def save(self, model:BaseModel) -> int:
         with Session() as session:
             session.add(model)
             session.commit()
+            session.flush()
+            id = model.id
+        return id
     
     def read_all(self) -> list:
         with Session() as session:

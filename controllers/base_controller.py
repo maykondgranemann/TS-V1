@@ -5,8 +5,9 @@ class BaseController:
     def __init__(self, dao:BaseModel) -> None:
         self.__dao = dao
     
-    def save(self, model:BaseModel) -> None:
-        self.__dao.save(model)
+    def save(self, model:BaseModel) -> int:
+        id = self.__dao.save(model)
+        return id
     
     def read_by_id(self, id:int) -> BaseModel:
         result = self.__dao.read_by_id(id)
