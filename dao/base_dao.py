@@ -16,7 +16,7 @@ class BaseDao:
             result = session.query(self.__type_model).all()
         return result
 
-    def read_by_id(self) -> BaseModel:
+    def read_by_id(self, id: int) -> BaseModel:
         with Session() as session:
             result = session.query(self.__type_model).filter_by(id=id).first()
         return result
