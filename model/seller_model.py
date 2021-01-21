@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String
+from sqlalchemy import Column, String, Integer
 
 class Seller():
     __tablename__ = 'seller'
@@ -8,7 +8,8 @@ class Seller():
     email = Column(String(length=200))
 
 
-    def __init__(self, name: str, phone: str, email: str):
+    def __init__(self, name: str, phone: str, email: str, id: int=None):
         self.name = name
         self.phone = phone
         self.email = email
+        self.id = id
