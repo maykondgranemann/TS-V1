@@ -18,13 +18,13 @@ class Category:
         return self.__id
     
     @name.setter
-    def name(self, name)
+    def name(self, name):
         self.__name = name
     
     @description.setter
-    def description(self, description)
+    def description(self, description):
         self.__description = description
     
     @id.setter
-    def id(self, id)
+    def id(self, id):
         self.__id = id
