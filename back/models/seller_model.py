@@ -1,17 +1,10 @@
-import sys
-sys.path.append('.')
-
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, String, Integer
+from back.models.base_model import BaseModel
 
-from back.dao.connection import Connection
 
-Base = declarative_base()
-
-class Seller(Base):
+class Seller(BaseModel):
     __tablename__ = 'seller'
 
-    id = Column(Integer, primary_key=True)
     name = Column(String)
     phone = Column(String)
     mail = Column(String)
