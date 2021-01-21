@@ -1,6 +1,4 @@
-import sys
-sys.path.append('.')
-from backend.dao.base_dao import BaseDao
+from .base_dao import BaseDao
 from backend.models.seller import Seller
 
 

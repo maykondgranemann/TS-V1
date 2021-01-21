@@ -1,9 +1,9 @@
-from backend.dao.session import Session
+from .session import Session
 from backend.models.base_model import BaseModel
 
 
 class BaseDao:
-    def __inti__(self, type_model:object)-> None:
+    def __init__(self, type_model:object)-> None:
         self.__type_model = type_model
 
     def save(self, model:BaseModel)-> None:

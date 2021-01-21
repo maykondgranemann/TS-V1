@@ -14,7 +14,7 @@ class Session:
     def __enter__(self)-> object:
         self.__engine = create_engine(self.__conn_string)
         Session = sessionmaker(self.__engine)
-        self.__session = Session
+        self.__session = Session()
         return self.__session
 
     def __exit__(self, type, value, traceback)-> None:
