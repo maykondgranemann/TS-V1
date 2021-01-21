@@ -21,7 +21,7 @@ class TestBaseDao:
         s = Seller(object_name, object_phone, object_email)
         test.save(s)
         with Session() as session:
-            model = session.query(Seller).filter_by(name='!@#$%¨$*&//').first()
+            model = session.query(Seller).filter_by(name=object_name).first()
         object_db_name = model.name
         assert object_db_name == object_name
         test.delete(model)
@@ -34,10 +34,10 @@ class TestBaseDao:
         s = Seller(object_name, object_phone, object_email)
         test.save(s)
         with Session() as session:
-            model = session.query(Seller).filter_by(name='!@#$%¨$*&//').first()
+            model = session.query(Seller).filter_by(name=object_name).first()
         test.delete(model)
         with Session() as session:
-            model_after_delete = session.query(Seller).filter_by(name='!@#$%¨$*&//').first()
+            model_after_delete = session.query(Seller).filter_by(name=object_name).first()
         assert model_after_delete is None
     
     def test_save_string(self) -> None:
@@ -85,3 +85,4 @@ class TestBaseDao:
             seller_test.delete(1)
         except Exception as e:
             assert isinstance(e, NameError)      
+

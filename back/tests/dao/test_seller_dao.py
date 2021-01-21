@@ -2,8 +2,6 @@ import sys
 sys.path.append('.')
 
 from back.dao.seller_dao import SellerDao
-from back.dao.base_dao import BaseDao
-from back.models.seller import Seller
 
 
 class TestSellerDao:
