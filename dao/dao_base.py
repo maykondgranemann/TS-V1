@@ -1,5 +1,5 @@
 # Importar as características da BaseModel
-from ..model.model_base import BaseModel
+from model.model_base import BaseModel
 
 # Importar a classe Session em session.py
 from .session import Session
@@ -19,9 +19,9 @@ class DaoBase:
             result = session.query(self.__type_model).all()
         return result
 
-    def read_by_id(self, id_:int) -> BaseModel:
+    def read_by_id(self, id:int) -> BaseModel:
         with Session() as session:
-            result = session(self.__type_model).filter_by(id=id_).first()
+            result = session.query(self.__type_model).filter_by(id=id).first()
         return result
 
     def delete(self, model: BaseModel) -> None:

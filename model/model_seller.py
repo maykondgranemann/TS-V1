@@ -14,8 +14,11 @@ class Seller(BaseModel):
     phone = Column(String(length=(18)))
 
 # Criar uma função __init__ com as propriedades definidas
-    def __init__(self, name: str, email: str, phone: str, id_: int=None):
+    def __init__(self, name: str, email: str, phone: str, id: int=None):
         self.name = name
         self.email = email
         self.phone = phone
-        self.id_ = id_
+        self.id = id
+
+    def __str__(self):
+        return f"{self.name} {self.email} {self.phone} {self.id}"

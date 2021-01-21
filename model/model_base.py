@@ -14,4 +14,4 @@ class BaseModel(Base):
     __abstract__ = True
     
 # Declarar a ID como coluna no BD
-    id_ = Column(Integer, primary_key=True)
+    id = Column( Integer, primary_key=True )
