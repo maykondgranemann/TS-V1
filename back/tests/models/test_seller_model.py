@@ -16,3 +16,7 @@ class TestSellerModel:
         assert seller.name is self.seller_name
         assert seller.phone is self.seller_phone
         assert seller.email is self.seller_email
+
+def start_test_seller_model():
+    test_seller_model = TestSellerModel()
+    test_seller_model.test_atributes()
