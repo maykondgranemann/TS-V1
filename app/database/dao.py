@@ -5,7 +5,7 @@ from app.database.session import Session
 
 
 class BaseDao:
-    def __init__(self, model_type: Type):
+    def __init__(self, model_type: Type) -> None:
         self.__model_type = model_type
 
     @staticmethod
