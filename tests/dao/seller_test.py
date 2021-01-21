@@ -9,17 +9,18 @@ email_ = 'eletro@eletro.com'
 def start_all_dao():
     create_instace()
     create_obj()
-    test_method_create()()
+    test_method_create()
 
 
 def create_obj():
     obj = Seller(name_, phone_, email_)
+    assert isinstance(obj, Seller), 'Objeto não é do tipo esperado'
     return obj
 
 
 def create_instace():
     dao = SellerDao()
-    assert isinstance(dao, SellerDao), 'Instância não é do tipo especificado'
+    assert isinstance(dao, SellerDao), 'Instância não é do tipo esperado'
     return dao
 
 
@@ -27,20 +28,24 @@ def test_method_create():
     dao = create_instace()
     obj = create_obj()
     result = dao.save(obj)
-    obj_by_id = dao.read_all()[-1]
 
-    assert result == None, 'O resultado de dao.save não foi o esperado'
+    list_messy = dao.read_all()
+    list_ordered = sorted(list_messy, key=lambda k: k.id)
+    obj = list_ordered[-1]
+
     assert isinstance(
-        obj_by_id, Seller), 'O objeto de retorno de dao.read_by_id não é o esperado'
-    assert obj_by_id.name == name_, 'O resultado de obj.name não é satisfatório'
-    assert obj_by_id.phone == phone_, 'O resultado de obj.phone não é satisfatório'
-    assert obj_by_id.email == email_, 'O resultado de obj.email não é satisfatório'
-    test_method_update(obj_by_id)
+        obj, Seller), 'O objeto de retorno de dao.read_all não é o esperado'
+    assert result == None, 'O resultado de dao.save não foi o esperado'
+    assert obj.name == name_, 'O resultado de obj.name não é satisfatório'
+    assert obj.phone == phone_, 'O resultado de obj.phone não é satisfatório'
+    assert obj.email == email_, 'O resultado de obj.email não é satisfatório'
+    test_method_update(obj)
 
 
 def test_method_update(obj: Seller):
     dao = create_instace()
     id_temp = obj.id
+
     name2 = 'Eletronicos'
     phone2 = '45 999-999'
     email2 = 'contato@eletronicos.com'
