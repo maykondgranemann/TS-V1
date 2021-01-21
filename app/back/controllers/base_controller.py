@@ -1,31 +1,39 @@
-from app.back.controllers.log_controller import LogController
+from .log_controller import LogController
+from ..models.log import Log
 
-log = LogController()
 
 class BaseController:
-    def __init__(self, dao, name_entity):
-        self.name_entity = name_entity
+    def __init__(self, dao):
         self.__dao = dao
-    
-    def create(self, model: object) -> None:
-        self.__dao.create(model)
-        log.create(f"Created {self.name_entity} - {model.name}")
-    
-    def read_by_id(self,id:int)-> object:
-        object = self.__dao.read_by_id(id)
-        log.create(f"Read {self.name_entity} - {object.name}")
-        return object
-        
-    def read_all(self) -> None:
-        result = self.__dao.read_all()
-        log.create(f"Listed {self.name_entity}")
-        return result
-         
-    def delete(self, id: int) -> None:
-        object = self.__dao.read_by_id(id)
-        self.__dao.delete(id)
-        log.create(f"Deleted {self.name_entity} - {object.name}")
+        self.__log_controller = LogController()
 
-    def update(self, model: object) -> None:
-        self.__dao.update(model)
-        log.create(f"Updated {self.name_entity} - {model.name}")
+    def create(self, model:object)-> None:
+        request = self.__dao.save(model)
+
+        log = Log("Saved", self.__dao.entity())
+        self.__log_controller.create(log)
+
+        return request
+
+    def read_by_id(self,id:int)-> object:
+        return self.__dao.read_by_id(id)
+
+    def read_all(self)-> list:
+        request = self.__dao.read_all()
+
+        log = Log("Listed", self.__dao.entity())
+        self.__log_controller.create(log)
+
+        return request
+
+    def delete(self, id:int)-> None:
+        model = self.read_by_id(id)
+        self.__dao.delete(model)
+
+        log = Log("Delete", self.__dao.entity())
+        self.__log_controller.create(log)
+
+    def update(self, model:object)-> None:
+        self.__dao.save(model)
+        log = Log("Update", self.__dao.entity())
+        self.__log_controller.create(log)
