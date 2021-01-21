@@ -7,12 +7,15 @@ class BaseDao:
         self.__type_model = type_model
 
     def save(self, model: BaseModel) -> None:
-        try:
-            with Session() as session:
-                session.add(model)
-                session.commit()
-        except Exception as e:
-            print(e)
+        if isinstance(model, BaseModel):
+            try:
+                with Session() as session:
+                    session.add(model)
+                    session.commit()
+            except Exception as e:
+                print(e)
+        else:
+            raise ValueError("The save method must be receive BaseModel Class")
 
     def read_all(self) -> list:
         try:
@@ -31,9 +34,12 @@ class BaseDao:
             print(e)
 
     def delete(self, model: BaseModel) -> None:
-        try:
-            with Session() as session:
-                session.delete(model)
-                session.commit()
-        except Exception as e:
-            print(e)
+        if isinstance(model, BaseModel):
+            try:
+                with Session() as session:
+                    session.delete(model)
+                    session.commit()
+            except Exception as e:
+                print(e)
+        else:
+            raise ValueError('The delete method must be receive BaseModel Class ')
