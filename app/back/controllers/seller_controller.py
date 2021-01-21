@@ -1,5 +1,5 @@
-from app.back.controllers.base_controller import BaseController
-from app.back.dao.seller_dao import SellerDao
+from ..controllers.base_controller import BaseController
+from ..dao.sellers_dao import SellerDao
 
 class SellerController(BaseController):
     def __init__(self, name_entity):
