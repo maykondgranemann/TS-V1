@@ -1,3 +1,5 @@
+import sys
+sys.path.append('')
 from controller.base_controller import BaseController
 from dao.seller_dao import SellerDao
 

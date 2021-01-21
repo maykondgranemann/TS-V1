@@ -3,6 +3,7 @@ sys.path.append('')
 from model.base_model import BaseModel
 from dao.session import Session
 
+
 class BaseDao:
     def __init__(self, type_model):
         self.__type_model = type_model
@@ -27,3 +28,28 @@ class BaseDao:
             session.delete(model)
             session.commit()
     
+
+#Testes#
+if BaseDao.save == BaseModel:
+    try:
+        print('ok')
+    except Exception as e:
+        assert isinstance(e, TypeError)
+
+if BaseDao.read_all == (list):
+    try:
+        print('ok')
+    except Exception as e:
+        assert isinstance(e, TypeError)
+
+if BaseDao.read_by_id == id(int):
+    try:
+        print('ok')
+    except Exception as e:
+        assert isinstance(e, TypeError)
+
+if BaseDao.delete == BaseModel:
+    try:
+        print('ok')
+    except Exception as e:
+        assert isinstance(e, TypeError)

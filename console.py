@@ -1,16 +1,11 @@
-from model.seller_model import Seller
+import sys
+sys.path.append
 from controller.seller_controller import SellerController
+from model.base_model import Seller
 
-seller = Seller('Quésia Santos', '28 99999-9999', 'quesia@carrefour.com')
-
-seller = SellerController().read_all()
-for s in seller:
-    print(s.name_seller)
-
-seller[0].name_seller = 'Quesia'
-seller[0].email = 'quesia@carrefour.com'
-SellerController().create(seller[0])
-
-sellerrs = SellerController().read_all()
-for s in seller:
-    print(s.name_seller)
+seller = Seller
+seller.name = input(str('Digite o nome do vendedor: '))
+seller.phone = input(str('Agora o telefone: '))
+seller.email = input(str('Para finalizar o e-mail: '))
+print('Muito bem, dados cadastrados!')
+print(seller.name, seller.phone, seller.email)

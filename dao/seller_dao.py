@@ -1,4 +1,5 @@
-from sqlalchemy.orm import sessionmaker
+import sys
+sys.path.append('')
 from dao.base_dao import BaseDao
 from model.seller_model import Seller
 

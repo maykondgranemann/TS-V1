@@ -1,5 +1,4 @@
 from sqlalchemy import Column, String
-from base_model import BaseModel
 
 class Seller():
     __tablename__ = 'seller'

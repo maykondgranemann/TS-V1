@@ -9,3 +9,11 @@ Base = declarative_base()
 class BaseModel(Base):
     __abstract__ = True
     id = Column(Integer, primary_key = True)
+    
+
+#Teste#
+if id == Integer:
+    try:
+        print('Ok')
+    except Exception as e:
+        assert isinstance(e, TypeError)
