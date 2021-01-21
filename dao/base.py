@@ -1,5 +1,5 @@
 import sys
-sys.path.append('/teste/')
+sys.path.append('/TS-V1/')
 
 from dao.session import Session
 
