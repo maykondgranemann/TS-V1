@@ -1,10 +1,11 @@
-from sqlalchemy import Column, String, Integer
+from sqlalchemy import Column, String
+from model.base_model import BaseModel
 
-class Seller():
+class Seller(BaseModel):
     __tablename__ = 'seller'
 
     name = Column(String(length=200))
-    phone = Column(String(length=20))
+    phone = Column(String(length=200))
     email = Column(String(length=200))
 
 
@@ -13,3 +14,6 @@ class Seller():
         self.phone = phone
         self.email = email
         self.id = id
+
+    def __str__(self):
+        return f"{self.id} {self.name} {self.phone} {self.email}"
