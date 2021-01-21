@@ -2,6 +2,8 @@ from backend.dao.base_dao import BaseDao
 from backend.dao.seller_dao import SellerDao
 from backend.models.seller import Seller
 from dotenv import load_dotenv
+from backend.dao.session import Session
+from sqlalchemy.orm.session import Session as AlchemySession
 
 DAO_LIST = [SellerDao(), BaseDao(Seller)]
 
@@ -12,6 +14,8 @@ for DAO in DAO_LIST:
     phone = '41997879889'
     seller = Seller(name, phone, email)
     load_dotenv()
+
+    assert isinstance(DAO, SellerDao) or isinstance(DAO, BaseDao)
 
     # Testing read_all method
     sellers = DAO.read_all()
@@ -53,3 +57,9 @@ for DAO in DAO_LIST:
     seller_to_delete = updated_seller
     state_deleted = DAO.delete(seller_to_delete)
     assert state_deleted
+
+    # Testing DB Session
+    session = Session()
+    inside_session = session.__enter__()
+    assert isinstance(session, Session)
+    assert isinstance(inside_session, AlchemySession)

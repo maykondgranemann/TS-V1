@@ -9,6 +9,9 @@ phone = '41997879889'
 seller = Seller(name, phone, email)
 CONTROLLER = SellerController()
 
+model = BaseModel()
+assert model.__abstract__
+
 assert isinstance(seller, Seller)
 
 # Testing get and set from name attribute
