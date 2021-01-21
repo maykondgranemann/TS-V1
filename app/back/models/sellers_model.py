@@ -4,7 +4,6 @@ from ..models.base_model import BaseModel
 class Seller(BaseModel): 
     __tablename__ = 'seller'
 
-    id = Column( Integer, primary_key=True )
     name = Column( String(length=100) )
     telephone = Column( String(length=20) )
     email = Column( String(length=50) )
