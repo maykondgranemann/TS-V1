@@ -1,4 +1,6 @@
 from controller.seller_controller import SellerController
+from tests.model.seller_test import start_all_model
+from tests.dao.seller_test import start_all_dao
 
-for item in SellerController().read_all():
-    print(item.id, item.name, item.phone, item.email)
+start_all_model()
+start_all_dao()

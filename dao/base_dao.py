@@ -1,5 +1,6 @@
 from model.base_model import BaseModel
 from dao.session import Session
+from sqlalchemy import desc, asc
 
 
 class BaseDao:
