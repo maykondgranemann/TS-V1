@@ -4,7 +4,7 @@ from .base_model import BaseModel
 
 
 class Seller(BaseModel):
-    __tablename__ = 'sellers'
+    __tablename__ = 'seller'
 
     name = Column(String(length=100))
     phone = Column(String(length=22))
