@@ -34,12 +34,11 @@ SellerController().save_ctrl(obj3)
 obj3=SellerController().read_by_id_ctrl(6)
 assert obj3.phone=='98854-8900'
 #test delete
-obj4=SellerController().read_by_id_ctrl(94)
+obj4=SellerController().read_by_id_ctrl(88)
 id=obj4.id
 SellerController().delete_ctrl(obj4)
 obj4=SellerController().read_by_id_ctrl(id)
-print(f"ID: {id}")
-assert isinstance(obj4,Seller)
+assert obj4==None
 
 
 
