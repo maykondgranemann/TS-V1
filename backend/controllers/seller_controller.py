@@ -1,5 +1,6 @@
 from backend.dao.seller_dao import SellerDao
-from .base_controller import BaseController
+from backend.controllers.base_controller import BaseController
+
 
 class SellerController(BaseController):
     def __init__(self):

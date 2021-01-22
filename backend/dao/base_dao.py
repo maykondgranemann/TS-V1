@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from backend.models.base_model import BaseModel
-from .session import Session
+from backend.dao.session import Session
 
 
 class BaseDao:
@@ -15,7 +15,7 @@ class BaseDao:
 
     def read_all(self) -> list:
         with Session() as session:
-            result = session.query(self.__type_model).all()
+            result = session.query(self.__type_model).order_by('id').all()
         return result
 
     def read_by_id(self, id:int) -> BaseModel:

@@ -1,5 +1,5 @@
 from backend.models.seller_model import Seller
-from .base_dao import BaseDao
+from backend.dao.base_dao import BaseDao
 
 
 class SellerDao(BaseDao):
