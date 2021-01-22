@@ -26,20 +26,3 @@ class BaseDao:
             session.delete(model)
             session.commit()
 
-
-#testes
-
-#create_update(Seller("Ana Paula", "12132312", "ana@teste.com"))
-
-# for i in read_all():
-#    print(i.name, i.phone, i.email, i.id)
-
-# seller = read_by_id(21)
-# print(seller.name, seller.id, seller.email)
-
-#seller.name = "novo seller"
-#seller.email = "new@seller.com"
-
-#create_update(seller)
-
-#delete(seller)
