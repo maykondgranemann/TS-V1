@@ -4,6 +4,7 @@ from backend.models.seller import Seller
 from dotenv import load_dotenv
 from backend.dao.session import Session
 from sqlalchemy.orm.session import Session as AlchemySession
+from sqlalchemy.orm.exc import UnmappedInstanceError
 
 DAO_LIST = [SellerDao(), BaseDao(Seller)]
 
@@ -15,12 +16,38 @@ for DAO in DAO_LIST:
     seller = Seller(name, phone, email)
     load_dotenv()
 
+    class FakeSeller:
+        fullname = 'josué fake'
+        email = 'fake@email.com'
+        phone = 'fake123'
+
     assert isinstance(DAO, SellerDao) or isinstance(DAO, BaseDao)
 
     # Testing read_all method
     sellers = DAO.read_all()
     assert isinstance(sellers, list)
     assert all(isinstance(item, Seller) for item in sellers)
+
+    # Testing read_by_id
+    try:
+        result_test = DAO.read_by_id('string')
+    except Exception as e:
+        assert isinstance(e, ValueError)
+
+    try:
+        fake = FakeSeller()
+
+        result_test = DAO.read_by_id(fake)
+    except Exception as e:
+        assert isinstance(e, TypeError)
+
+    try:
+        test_list = [1, 2, 3]
+        result_test = DAO.read_by_id(test_list)
+    except Exception as e:
+        assert isinstance(e, TypeError)
+
+
 
     # Testing insert and read_by_id methods
     result = DAO.save(seller)
@@ -29,10 +56,23 @@ for DAO in DAO_LIST:
     saved_seller = DAO.read_by_id(identifier)
     assert isinstance(saved_seller, Seller)
     assert isinstance(identifier, int)
+    assert isinstance(result, tuple)
     assert saved_seller.fullname == name
     assert saved_seller.phone == phone
     assert saved_seller.email == email
     assert state_persistent
+
+    try:
+        value_test = 'string'
+        DAO.save(value_test)
+    except Exception as e:
+        assert isinstance(e, UnmappedInstanceError)
+
+    fake = FakeSeller()
+    try:
+        DAO.save(fake)
+    except Exception as e:
+        assert isinstance(e, UnmappedInstanceError)
 
     # Testing update and read_by_id methods
     new_name = 'Josué Rosa de Ávila'
@@ -53,13 +93,26 @@ for DAO in DAO_LIST:
     assert updated_seller.email == new_email
     assert state_updated
 
-    # Testing update and read_by_id methods
+    # Testing delete and read_by_id methods
     seller_to_delete = updated_seller
     state_deleted = DAO.delete(seller_to_delete)
     assert state_deleted
+
+    try:
+        value_test = 'string'
+        DAO.delete(value_test)
+    except Exception as e:
+        assert isinstance(e, UnmappedInstanceError)
+
+    fake = FakeSeller()
+    try:
+        DAO.delete(fake)
+    except Exception as e:
+        assert isinstance(e, UnmappedInstanceError)
 
     # Testing DB Session
     session = Session()
     inside_session = session.__enter__()
     assert isinstance(session, Session)
     assert isinstance(inside_session, AlchemySession)
+

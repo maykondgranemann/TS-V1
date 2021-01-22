@@ -10,9 +10,8 @@ class BaseDao:
     def save(self, model: BaseModel) -> tuple:
         with Session() as session:
             session.add(model)
-            session.flush()
-            id_ = model.id
             session.commit()
+            id_ = model.id
             state = inspect(model).persistent
         return id_, state
 
@@ -21,9 +20,10 @@ class BaseDao:
             result = session.query(self.type_model).all()
             return result
 
-    def read_by_id(self, id: int) -> object:
+    def read_by_id(self, id_: int) -> object:
+        int(id_)
         with Session() as session:
-            result = session.query(self.type_model).filter_by(id=id).first()
+            result = session.query(self.type_model).filter_by(id=id_).first()
             return result
 
     def delete(self, model: object) -> bool:

@@ -36,4 +36,7 @@ class Seller(BaseModel):
 
     @email.setter
     def email(self, value: str) -> None:
-        self.__email = value
+        if isinstance(value, str):
+            self.__email = value
+        else:
+            raise ValueError

@@ -1,7 +1,6 @@
 from backend.models.base_model import BaseModel
 from backend.models.seller import Seller
 from backend.controllers.seller_controller import SellerController
-from dotenv import load_dotenv
 
 name = 'Josué Ávila'
 email = 'josue.avila@olist.com'
@@ -32,13 +31,27 @@ assert type(phone) == type(seller.phone)
 assert isinstance(seller.email, str)
 assert seller.phone is phone
 
-# Testing Base Model
-load_dotenv()
-result = CONTROLLER.save(seller)
-identifier = result[0]
-assert isinstance(identifier, int)
-
 # Test exceptions
+try:
+    new_test_name = None
+    seller.fullname = new_test_name
+except Exception as e:
+    assert isinstance(e, TypeError)
 
+try:
+    new_test_email = None
+    seller.email = new_test_email
+except Exception as e:
+    assert isinstance(e, ValueError)
 
+try:
+    new_test_phone = None
+    seller.phone = new_test_phone
+except Exception as e:
+    assert isinstance(e, TypeError)
 
+try:
+    new_test_email = 1
+    seller.email = new_test_email
+except Exception as e:
+    assert isinstance(e, ValueError)
