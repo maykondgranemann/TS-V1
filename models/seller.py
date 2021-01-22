@@ -1,18 +1,15 @@
-from sqlalchemy import Column, String, Integer
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, String
 
-Base = declarative_base()
+from models.base_model import BaseModel
 
 
-class Seller(Base):
+class Seller(BaseModel):
     __tablename__ = 'seller'
-    id = Column(Integer, primary_key=True)
     name = Column('nome', String(length=200))
     phone = Column('telefone', String(length=13))
     email = Column('email', String(length=200))
 
-    def __init__(self, name: str, email: str, phone: str, id: int = None):
-        self.id = id
+    def __init__(self, name: str, email: str, phone: str):
         self.name = name
         self.email = email
         self.phone = phone
