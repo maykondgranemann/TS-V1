@@ -21,23 +21,23 @@ def main():
         x =random.randint(0,10000)
         if op==1:
             seller = Seller('Gustavo' + str(x), '345688888', 'ggggg@gmail.com')
-            SellerController().save(seller)
+            SellerController().save_ctrl(seller)
         elif op==2:
-            for s_aux in SellerController().read_all():
+            for s_aux in SellerController().read_all_ctrl():
                 print(s_aux)
         elif op==3:
             id_aux=int(input('Inseria um ID para buscar e atualizar:'))
-            seller_aux=SellerController().read_by_id(id_aux)
+            seller_aux=SellerController().read_by_id_ctrl(id_aux)
             seller_aux.name=input('Novo nome:')
             seller_aux.phone =input('Novo Telefone')
             seller_aux.email = input('Novo Email')
-            SellerController().save(seller_aux)
+            SellerController().save_ctrl(seller_aux)
               
         elif op==4:
            id_aux=int(input('Inseria um ID para buscar e deletar:'))
-           seller_aux=SellerController().read_by_id(id_aux)
+           seller_aux=SellerController().read_by_id_ctrl(id_aux)
            print(f'Linha deletada ->  {seller_aux}')
-           SellerController().delete(seller_aux)
+           SellerController().delete_ctrl(seller_aux)
         elif op==5:
             exit(0)
 
