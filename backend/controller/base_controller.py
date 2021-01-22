@@ -6,11 +6,8 @@ from backend.dao.base_dao import BaseDao
 
 class BaseController:  
     def __init__(self, dao):
-        if isinstance(dao,BaseDao):
-            self.__dao = dao()
-        else:
-            raise TypeError('Tipo de parametro tem que ser da Classe Base Dao')
-
+        self.__dao = dao()
+        
     def save_ctrl(self, model: BaseModel) -> None:
         self.__dao.save_dao(model)
 
