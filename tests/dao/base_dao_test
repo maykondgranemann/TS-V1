@@ -1,0 +1,9 @@
+import sys
+
+sys.path.append('.')
+
+from dao.base_dao import BaseDao
+
+
+base_dao = BaseDao()
+assert isinstance(base_dao, BaseDao)
