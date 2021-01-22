@@ -4,8 +4,8 @@ from backend.tests.test_model import run_test_model
 from backend.tests.test_dao import run_test_dao
 
 # -- TESTS --
-# run_test_model()
-# run_test_dao()
+run_test_model()
+run_test_dao()
 
 # -- NEW SELLER --
 # new_seller = Seller('Name', 'Phone', 'Email')

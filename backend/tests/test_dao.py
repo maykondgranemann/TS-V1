@@ -3,7 +3,7 @@ from backend.dao.seller_dao import SellerDao
 from backend.models.seller import Seller
 
 
-def test_instance():
+def test_dao_instance():
     seller_dao = SellerDao()
     assert isinstance(seller_dao, BaseDao)
     assert isinstance(seller_dao, SellerDao)
@@ -40,7 +40,7 @@ def test_dao_delete():
 
 def run_test_dao():
     try:
-        test_instance()
+        test_dao_instance()
         test_dao_save()
         test_dao_read_all()
         test_dao_read_by_id()
