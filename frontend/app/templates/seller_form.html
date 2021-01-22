@@ -20,19 +20,19 @@
 </form>
 {% else %}
 <h1>'Create Seller'</h1>
-<form action="/sellers/create">
+<form action="/sellers/create" method='POST'>
     <label>
         Fullname:
     </label>
-    <input name="fullname" value="" type="text"/>
+    <input name="fullname" type="text"/>
     <label>
         E-mail:
     </label>
-    <input name="email" value="" type="text"/>
+    <input name="email" type="text"/>
     <label>
         Phone:
     </label>
-    <input name="phone_number" value="" type="number"/>
+    <input name="phone_number" type="number"/>
     <input required type="submit" value="save"/>
 </form>
 {% endif %}

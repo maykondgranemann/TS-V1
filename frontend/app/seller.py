@@ -13,18 +13,22 @@ def list_all_sellers():
 
 
 @seller.route('/sellers/create')
-def create_seller():
-    fullname = request.args.get('fullname')
-    email = request.args.get('email')
-    phone = request.args.get('phone_number')
-    seller = Seller(fullname, phone, email)
-    print(seller.fullname, seller.phone, seller.email)
-    if (fullname is None) and (email is None) and (phone is None):
-        pass
-    else:
-        CONTROLLER.save(seller)
-        return redirect('/sellers')
+def create_seller_form():
     return render_template('seller_form.html', name='olist')
+
+
+@seller.route('/sellers/create', methods=['POST'])
+def create_seller():
+    fullname = request.form.get('fullname')
+    email = request.form.get('email')
+    phone = request.form.get('phone_number')
+    new_seller = Seller(fullname, phone, email)
+    print(fullname, email, phone)
+    if (fullname is None) and (email is None) and (phone is None):
+        return render_template('seller_form.html', name='olist')
+    else:
+        CONTROLLER.save(new_seller)
+        return redirect('/sellers')
 
 
 @seller.route('/sellers/update')
