@@ -17,18 +17,18 @@ def instace_object():
 
 def test_obj_seller():
     obj = instace_object()
-    assert isinstance(obj, Seller), 'Objeto não é do tipo especificado'
+    assert isinstance(obj, Seller), '[In Model]Objeto não é do tipo especificado'
 
 
 def test_return_seller():
     obj = instace_object()
     assert isinstance(
-        obj.name, str), 'O retorno para "name" não é do tipo esperado'
+        obj.name, str), '[In Model]O retorno para "name" não é do tipo esperado'
     assert isinstance(
-        obj.phone, str), 'O retorno "phone" não é do tipo esperado'
+        obj.phone, str), '[In Model]O retorno "phone" não é do tipo esperado'
     assert isinstance(
-        obj.email, str), 'O retorno "email" não é do tipo esperado'
+        obj.email, str), '[In Model]O retorno "email" não é do tipo esperado'
 
-    assert obj.name == name_, 'A saída de "name" não é válida ou igual a entrada'
-    assert obj.email == email_, 'A saída de "email" não é válida ou igual a entrada'
-    assert obj.phone == phone_, 'A saída de "phone" não é válida ou igual a entrada'
+    assert obj.name == name_, '[In Model]A saída de "name" não é válida ou igual a entrada'
+    assert obj.email == email_, '[In Model]A saída de "email" não é válida ou igual a entrada'
+    assert obj.phone == phone_, '[In Model]A saída de "phone" não é válida ou igual a entrada'
