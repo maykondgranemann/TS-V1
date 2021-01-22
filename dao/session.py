@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker
 class Session:
     def __init__(self) -> None:
         conector = 'postgresql'
-        host = 'pgsql08-farm15.uni15.net'
+        host = 'pgsql08-farm15.uni5.net'
         user = 'topskills7'
         password = 'olist21'
         dbname = 'topskills7'

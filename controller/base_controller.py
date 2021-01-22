@@ -7,13 +7,11 @@ class BaseController:
     def save(self, model: BaseModel) -> None:
         self.__dao.save(model)
 
-    def read_by_id(self, id: int) -> object:
-        result = self.__dao.read_by_id(id)
-        return result
-
     def read_all(self) -> list:
-        result = self.__dao.read_all()
-        return result
+        return self.__dao.read_all()
+
+    def read_by_id(self, id: int) -> object:
+        return self.__dao.read_by_id(id)
 
     def delete(self, model: BaseModel) -> None:
         self.__dao.delete(model)
