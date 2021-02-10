@@ -20,10 +20,10 @@ class BaseDao:
             result = session.query(self.type_model).all()
             return result
 
-    def read_by_id(self, id_: int) -> object:
-        int(id_)
+    def read_by_id(self, identifier: int) -> BaseModel:
+        # int(id_)
         with Session() as session:
-            result = session.query(self.type_model).filter_by(id=id_).first()
+            result = session.query(self.type_model).filter_by(id=identifier).first()
             return result
 
     def delete(self, model: object) -> bool:

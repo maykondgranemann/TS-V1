@@ -23,7 +23,6 @@ def create_seller():
     email = request.form.get('email')
     phone = request.form.get('phone_number')
     new_seller = Seller(fullname, phone, email)
-    print(fullname, email, phone)
     if (fullname is None) and (email is None) and (phone is None):
         return render_template('seller_form.html', name='olist')
     else:
